@@ -1,0 +1,15 @@
+name: Junie
+
+on:
+  issues:
+    types: [opened]
+  issue_comment:
+    types: [created]
+  pull_request_review_comment:
+    types: [created]
+
+jobs:
+  call-workflow-passing-data:
+    uses: JetBrains/junie-workflows/.github/workflows/ej-issue.yml@main
+    secrets:
+      GCP_DOCKER_JUNIE_KEY: "${{ secrets.GCP_DOCKER_JUNIE_KEY }}"
