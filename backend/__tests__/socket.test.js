@@ -1,100 +1,114 @@
-import { createServer } from 'http';
-import { Server } from 'socket.io';
-import Client from 'socket.io-client';
-import { app } from '../src/index.js';
-import { initializeSocketIO } from '../src/socket.js';
-import { userService, messageService } from '../src/data/dataServices.js';
+import { io as Client } from 'socket.io-client';
+import { httpServer } from '../src/index.js';
+import {userService, messageService} from '../src/data/dataServices.js';
 import { generateToken } from '../src/middleware/auth.js';
 
 describe('Socket.IO Chat', () => {
-  let io, serverSocket, clientSocket, httpServer;
+  let clientSocket;
   const testUser = {
     username: 'testuser',
     password: 'password123'
   };
   let authToken;
 
-  beforeAll((done) => {
-    httpServer = createServer(app);
-    io = new Server(httpServer);
-    initializeSocketIO(io);
-    httpServer.listen(() => {
-      const port = httpServer.address().port;
-      clientSocket = new Client(`http://localhost:${port}`, {
-        auth: {
-          token: null // Will be set in beforeEach
-        }
-      });
-      done();
-    });
+  beforeAll(() => {
+    userService.createUser(testUser.username, testUser.password);
+    authToken = generateToken(testUser.username);
   });
 
   beforeEach((done) => {
-    // Clear data
-    userService.users.clear();
-    messageService.messages = [];
-
-    // Create test user and generate token
-    userService.createUser(testUser.username, testUser.password);
-    authToken = generateToken(testUser.username);
-
-    // Update client socket auth token
-    clientSocket.auth = { token: authToken };
-    
-    // Wait for connection
+    clientSocket = new Client(`http://localhost:${httpServer.address().port}`, {
+      auth: {
+        token: authToken,
+        reconnection: false
+      }
+    });
     clientSocket.on('connect', done);
-    clientSocket.connect();
   });
 
   afterEach(() => {
-    clientSocket.disconnect();
+    clientSocket.close();
   });
 
-  afterAll(() => {
-    io.close();
-    httpServer.close();
+  afterAll((done) => {
+    httpServer.close(done);
   });
 
-  test('should authenticate with valid token', (done) => {
-    clientSocket.on('connect', () => {
+  describe('Authentication', () => {
+    it('should authenticate with valid token', () => {
       expect(clientSocket.connected).toBe(true);
-      done();
+    });
+
+    it('should reject connection with invalid token', (done) => {
+      const invalidSocket = new Client(`http://localhost:${httpServer.address().port}`, {
+        auth: { token: 'invalid-token', reconnection: false }
+      });
+      invalidSocket.on('connect_error', (error) => {
+        try {
+          expect(error.message).toBe('Invalid token');
+          done(); // Called if the assertion passes
+        } catch (err) {
+          done(err); // Mark the test as failed if the assertion fails
+        }
+      });
+    });
+
+    it('should reject connection without token', (done) => {
+      const noTokenSocket = new Client(`http://localhost:${httpServer.address().port}`, {
+        auth: {}
+      });
+
+      noTokenSocket.on('connect_error', (error) => {
+        try {
+          expect(error.message).toBe('Authentication token required');
+          done(); // Called if the assertion passes
+        } catch (err) {
+          done(err); // Mark the test as failed if the assertion fails
+        }
+      });
+
     });
   });
 
-  test('should broadcast messages to all clients', (done) => {
-    const testMessage = { content: 'Hello, WebSocket!' };
+  describe('Messaging', () => {
+    it('should broadcast messages to all clients', (done) => {
+      const testMessage = { content: 'Hello, WebSocket!' };
 
-    clientSocket.on('message', (message) => {
-      expect(message).toHaveProperty('content', testMessage.content);
-      expect(message).toHaveProperty('username', testUser.username);
-      expect(message).toHaveProperty('id');
-      expect(message).toHaveProperty('timestamp');
-      done();
+      clientSocket.on('message', (message) => {
+        try {
+          expect(message).toMatchObject({
+            content: testMessage.content,
+            username: testUser.username,
+            id: expect.any(Number),
+            timestamp: expect.any(String)
+          });
+          // Verify timestamp is valid ISO string
+          expect(() => new Date(message.timestamp)).not.toThrow();
+          done(); // Called if the assertion passes
+        } catch (err) {
+          done(err); // Mark the test as failed if the assertion fails
+        }
+      });
+
+      clientSocket.emit('message', testMessage);
     });
 
-    clientSocket.emit('message', testMessage);
-  });
 
-  test('should handle message errors', (done) => {
-    clientSocket.on('error', (error) => {
-      expect(error).toHaveProperty('message');
-      done();
-    });
-
-    // Send invalid message
-    clientSocket.emit('message', {});
-  });
-
-  test('should reject connection with invalid token', (done) => {
-    const invalidSocket = new Client(`http://localhost:${httpServer.address().port}`, {
-      auth: { token: 'invalid-token' }
-    });
-
-    invalidSocket.on('connect_error', (error) => {
-      expect(error.message).toBe('Invalid token');
-      invalidSocket.close();
-      done();
+    it('should store message in database', (done) => {
+      const testMessage = { content: 'Test message for storage' };
+      clientSocket.on('message', async (message) => {
+        try {
+          // Verify message is stored
+          const storedMessages = await messageService.getMessages(1);
+          expect(storedMessages.length).toBe(1);
+          expect(storedMessages[0].content).toBe(testMessage.content);
+          expect(storedMessages[0].username).toBe(testUser.username);
+          done(); // Called if the assertion passes
+        } catch (err) {
+          done(err); // Mark the test as failed if the assertion fails
+        }
+      });
+      clientSocket.emit('message', testMessage);
     });
   });
 });

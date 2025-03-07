@@ -22,7 +22,7 @@ const io = new SocketIO(httpServer, {
 });
 
 // Middleware
-//app.use(cors());
+app.use(cors());
 app.use(express.json());
 
 // Request/Response logging middleware
