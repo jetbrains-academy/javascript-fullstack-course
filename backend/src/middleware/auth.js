@@ -1,6 +1,6 @@
 import dotenv from 'dotenv';
 import jwt from 'jsonwebtoken';
-import { userService } from '../data/index.js';
+import { userService } from '../data/dataServices.js';
 
 // Validate JWT secret configuration
 dotenv.config();
@@ -18,7 +18,7 @@ export const generateToken = (username) => {
   return jwt.sign({ username }, JWT_SECRET, { expiresIn: '24h' });
 };
 
-export const authenticateToken = (req, res, next) => {
+export const authenticateToken = async (req, res, next) => {
   const authHeader = req.headers['authorization'];
   const token = authHeader && authHeader.split(' ')[1];
 
@@ -28,7 +28,7 @@ export const authenticateToken = (req, res, next) => {
 
   try {
     const decoded = jwt.verify(token, JWT_SECRET);
-    const user = userService.getUser(decoded.username);
+    const user = await userService.getUser(decoded.username);
 
     if (!user) {
       return res.status(401).json({ message: 'User not found' });
@@ -41,7 +41,7 @@ export const authenticateToken = (req, res, next) => {
   }
 };
 
-export const authenticateSocket = (socket, next) => {
+export const authenticateSocket = async (socket, next) => {
   const token = socket.handshake.auth.token;
 
   if (!token) {
@@ -50,7 +50,7 @@ export const authenticateSocket = (socket, next) => {
 
   try {
     const decoded = jwt.verify(token, JWT_SECRET);
-    const user = userService.getUser(decoded.username);
+    const user = await userService.getUser(decoded.username);
 
     if (!user) {
       return next(new Error('User not found'));

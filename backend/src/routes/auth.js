@@ -1,6 +1,6 @@
 import express from 'express';
 import bcrypt from 'bcryptjs';
-import { userService } from '../data/index.js';
+import { userService } from '../data/dataServices.js';
 import { generateToken } from '../middleware/auth.js';
 
 const router = express.Router();
@@ -21,7 +21,7 @@ router.post('/register', async (req, res) => {
 
     // Create user
     console.log('Attempting to create user:', { username });
-    const user = userService.createUser(username, hashedPassword);
+    const user = await userService.createUser(username, hashedPassword);
     console.log('User created successfully:', user);
 
     // Generate token
@@ -47,7 +47,7 @@ router.post('/login', async (req, res) => {
       return res.status(400).json({ message: 'Username and password are required' });
     }
 
-    const user = userService.getUser(username);
+    const user = await userService.getUser(username);
 
     if (!user) {
       return res.status(401).json({ message: 'Invalid username or password' });

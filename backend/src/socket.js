@@ -1,4 +1,4 @@
-import { messageService } from './data/index.js';
+import { messageService } from './data/dataServices.js';
 import { authenticateSocket } from './middleware/auth.js';
 
 export const initializeSocketIO = (io) => {
@@ -11,7 +11,7 @@ export const initializeSocketIO = (io) => {
     // Handle new messages
     socket.on('message', async (data) => {
       try {
-        const message = messageService.addMessage(socket.user.username, data.content);
+        const message = await messageService.addMessage(socket.user.username, data.content);
         
         // Broadcast the message to all connected clients
         io.emit('message', message);

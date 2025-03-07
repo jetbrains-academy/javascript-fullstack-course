@@ -6,7 +6,7 @@ const store = {
 
 // User methods
 export const userService = {
-  createUser: (username, hashedPassword) => {
+  createUser: async (username, hashedPassword) => {
     console.log('Data layer: Creating user:', { username });
 
     if (store.users.has(username)) {
@@ -21,7 +21,7 @@ export const userService = {
     return { username };
   },
 
-  getUser: (username) => {
+  getUser: async (username) => {
     console.log('Data layer: Getting user:', { username });
     const user = store.users.get(username);
     console.log('Data layer: User found:', !!user);
@@ -32,7 +32,7 @@ export const userService = {
 
 // Message methods
 export const messageService = {
-  addMessage: (username, content) => {
+  addMessage: async (username, content) => {
     const message = {
       id: Date.now(),
       username,
@@ -43,12 +43,12 @@ export const messageService = {
     return message;
   },
 
-  getMessages: (limit = 50) => {
+  getMessages: async (limit = 50) => {
     return store.messages.slice(-limit);
   },
 
   // TODO: Give it to students as optional!
-  deleteMessage: (messageId) => {
+  deleteMessage: async (messageId) => {
     const index = store.messages.findIndex(msg => msg.id === messageId);
     if (index !== -1) {
       store.messages.splice(index, 1);

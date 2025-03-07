@@ -1,13 +1,13 @@
 import express from 'express';
-import { messageService } from '../data/index.js';
+import { messageService } from '../data/dataServices.js';
 
 const router = express.Router();
 
 // Get all messages
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const limit = parseInt(req.query.limit) || 50;
-    const messages = messageService.getMessages(limit);
+    const messages = await messageService.getMessages(limit);
     res.json(messages);
   } catch (error) {
     res.status(500).json({ message: 'Error fetching messages' });
@@ -15,10 +15,10 @@ router.get('/', (req, res) => {
 });
 
 // Create a new message
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
   try {
     const { content/*, username */} = req.body;
-    
+
     if (!content) {
       return res.status(400).json({ message: 'Message content is required' });
     }
@@ -27,8 +27,8 @@ router.post('/', (req, res) => {
     //   return res.status(400).json({ message: 'Username is required' });
     // }
 
-    const message = messageService.addMessage(req.user.username, content);
-    // const message = messageService.addMessage(username, content);
+    const message = await messageService.addMessage(req.user.username, content);
+    // const message = await messageService.addMessage(username, content);
     res.status(201).json(message);
   } catch (error) {
     res.status(500).json({ message: 'Error creating message' });
@@ -37,10 +37,10 @@ router.post('/', (req, res) => {
 
 // Delete a message
 // TODO: Give it to students as optional!
-router.delete('/:id', (req, res) => {
+router.delete('/:id', async (req, res) => {
   try {
     const messageId = parseInt(req.params.id);
-    const deleted = messageService.deleteMessage(messageId);
+    const deleted = await messageService.deleteMessage(messageId);
 
     if (!deleted) {
       return res.status(404).json({ message: 'Message not found' });

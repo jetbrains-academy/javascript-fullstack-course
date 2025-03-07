@@ -3,7 +3,7 @@ import { Server } from 'socket.io';
 import Client from 'socket.io-client';
 import { app } from '../src/index.js';
 import { initializeSocketIO } from '../src/socket.js';
-import { userService, messageService } from '../src/data/index.js';
+import { userService, messageService } from '../src/data/dataServices.js';
 import { generateToken } from '../src/middleware/auth.js';
 
 describe('Socket.IO Chat', () => {

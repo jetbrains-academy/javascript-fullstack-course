@@ -1,6 +1,6 @@
 import request from 'supertest';
 import { app } from '../src/index.js';
-import { userService, messageService } from '../src/data/index.js';
+import { userService, messageService } from '../src/data/dataServices.js';
 import { generateToken } from '../src/middleware/auth.js';
 
 describe('Messages API', () => {
