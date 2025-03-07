@@ -1,7 +1,6 @@
 import request from 'supertest';
-import { app } from '../src/index.js';
-import { userService, messageService } from '../src/data/dataServices.js';
-import { generateToken } from '../src/middleware/auth.js';
+import { httpServer } from '../src/index.js';
+import store from '../src/data/dataServices.js';
 
 describe('Messages API', () => {
   let authToken;
@@ -10,22 +9,29 @@ describe('Messages API', () => {
     password: 'password123'
   };
 
+  beforeAll(() => {
+  });
+
+  afterAll((done) => {
+    httpServer.close(done);
+  });
+
   beforeEach(async () => {
     // Clear data
-    userService.users.clear();
-    messageService.messages = [];
+    store.users.clear();
+    store.messages = [];
 
-    // Create test user and get token
-    await request(app)
+    // Register and login test user
+    const registerResponse = await request(httpServer)
       .post('/api/auth/register')
       .send(testUser);
-    
-    authToken = generateToken(testUser.username);
+
+    authToken = registerResponse.body.token;
   });
 
   describe('GET /api/messages', () => {
     it('should get empty message list initially', async () => {
-      const response = await request(app)
+      const response = await request(httpServer)
         .get('/api/messages')
         .set('Authorization', `Bearer ${authToken}`);
 
@@ -33,35 +39,82 @@ describe('Messages API', () => {
       expect(response.body).toEqual([]);
     });
 
-    it('should get messages with limit', async () => {
-      // Add some test messages
-      for (let i = 0; i < 3; i++) {
-        messageService.addMessage(testUser.username, `Test message ${i}`);
+    it('should get messages with default limit', async () => {
+      // Add test messages
+      const messagesToAdd = 60;
+      for (let i = 0; i < messagesToAdd; i++) {
+        await request(httpServer)
+          .post('/api/messages')
+          .set('Authorization', `Bearer ${authToken}`)
+          .send({ content: `Test message ${i}` });
       }
 
-      const response = await request(app)
+      const response = await request(httpServer)
+        .get('/api/messages')
+        .set('Authorization', `Bearer ${authToken}`);
+
+      expect(response.status).toBe(200);
+      expect(response.body).toHaveLength(50); // Default limit
+      expect(response.body[49].content).toBe('Test message 59'); // Latest message
+    });
+
+    it('should get messages with custom limit', async () => {
+      // Add test messages
+      for (let i = 0; i < 3; i++) {
+        await request(httpServer)
+          .post('/api/messages')
+          .set('Authorization', `Bearer ${authToken}`)
+          .send({ content: `Test message ${i}` });
+      }
+
+      const response = await request(httpServer)
         .get('/api/messages?limit=2')
         .set('Authorization', `Bearer ${authToken}`);
 
       expect(response.status).toBe(200);
       expect(response.body).toHaveLength(2);
+      expect(response.body[1].content).toBe('Test message 2');
+    });
+
+    it('should fail without authentication', async () => {
+      const response = await request(httpServer)
+        .get('/api/messages');
+
+      expect(response.status).toBe(401);
     });
   });
 
   describe('POST /api/messages', () => {
-    it('should create a new message', async () => {
-      const response = await request(app)
+    it('should create a new message with correct structure', async () => {
+      const response = await request(httpServer)
         .post('/api/messages')
         .set('Authorization', `Bearer ${authToken}`)
         .send({ content: 'Hello, World!' });
 
       expect(response.status).toBe(201);
-      expect(response.body).toHaveProperty('content', 'Hello, World!');
-      expect(response.body).toHaveProperty('username', testUser.username);
+      expect(response.body).toMatchObject({
+        content: 'Hello, World!',
+        username: testUser.username,
+        id: expect.any(Number),
+        timestamp: expect.any(String)
+      });
+
+      // Verify timestamp is valid ISO string
+      expect(() => new Date(response.body.timestamp)).not.toThrow();
     });
 
-    it('should fail without content', async () => {
-      const response = await request(app)
+    it('should fail with empty content', async () => {
+      const response = await request(httpServer)
+        .post('/api/messages')
+        .set('Authorization', `Bearer ${authToken}`)
+        .send({ content: '' });
+
+      expect(response.status).toBe(400);
+      expect(response.body).toHaveProperty('message', 'Message content is required');
+    });
+
+    it('should fail without content field', async () => {
+      const response = await request(httpServer)
         .post('/api/messages')
         .set('Authorization', `Bearer ${authToken}`)
         .send({});
@@ -71,8 +124,17 @@ describe('Messages API', () => {
     });
 
     it('should fail without authentication', async () => {
-      const response = await request(app)
+      const response = await request(httpServer)
         .post('/api/messages')
+        .send({ content: 'Hello, World!' });
+
+      expect(response.status).toBe(401);
+    });
+
+    it('should fail with invalid token', async () => {
+      const response = await request(httpServer)
+        .post('/api/messages')
+        .set('Authorization', 'Bearer invalid_token')
         .send({ content: 'Hello, World!' });
 
       expect(response.status).toBe(401);
@@ -81,26 +143,50 @@ describe('Messages API', () => {
 
   describe('DELETE /api/messages/:id', () => {
     it('should delete an existing message', async () => {
-      // Create a message first
-      const message = messageService.addMessage(testUser.username, 'Test message');
+      // Create a message
+      const createResponse = await request(httpServer)
+        .post('/api/messages')
+        .set('Authorization', `Bearer ${authToken}`)
+        .send({ content: 'Test message' });
 
-      const response = await request(app)
-        .delete(`/api/messages/${message.id}`)
+      const messageId = createResponse.body.id;
+
+      // Delete the message
+      const deleteResponse = await request(httpServer)
+        .delete(`/api/messages/${messageId}`)
         .set('Authorization', `Bearer ${authToken}`);
 
-      expect(response.status).toBe(204);
+      expect(deleteResponse.status).toBe(204);
 
       // Verify message is deleted
-      const messages = messageService.getMessages();
-      expect(messages).toHaveLength(0);
+      const getResponse = await request(httpServer)
+        .get('/api/messages')
+        .set('Authorization', `Bearer ${authToken}`);
+
+      expect(getResponse.body).toHaveLength(0);
     });
 
     it('should return 404 for non-existent message', async () => {
-      const response = await request(app)
+      const response = await request(httpServer)
         .delete('/api/messages/999999')
         .set('Authorization', `Bearer ${authToken}`);
 
       expect(response.status).toBe(404);
+    });
+
+    it('should fail without authentication', async () => {
+      const response = await request(httpServer)
+        .delete('/api/messages/1');
+
+      expect(response.status).toBe(401);
+    });
+
+    it('should fail with invalid token', async () => {
+      const response = await request(httpServer)
+        .delete('/api/messages/1')
+        .set('Authorization', 'Bearer invalid_token');
+
+      expect(response.status).toBe(401);
     });
   });
 });
