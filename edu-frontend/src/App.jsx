@@ -5,6 +5,7 @@ import SumCalculator from './components/SumCalculator';
 import GetMessages from './components/GetMessages';
 import PostMessage from './components/PostMessage';
 import DeleteMessage from './components/DeleteMessage';
+import WebSocketDelete from './components/WebSocketDelete';
 import WebSocketMessages from './components/WebSocketMessages';
 import WebSocketSender from './components/WebSocketSender';
 import Login from './components/Login';
@@ -54,6 +55,9 @@ function App() {
 
   const [deleteMessageError, setDeleteMessageError] = useState('');
   const [deleteMessageResult, setDeleteMessageResult] = useState(null);
+
+  const [wsDeleteError, setWsDeleteError] = useState('');
+  const [wsDeleteResult, setWsDeleteResult] = useState(null);
 
   const [wsError, setWsError] = useState('');
 
@@ -110,6 +114,13 @@ function App() {
             onError={setWsSenderError}
             onResult={setWsSenderResult}
             error={wsSenderError}
+          />
+        </Tile>
+
+        <Tile title="WebSocket Delete" error={wsDeleteError} jsonData={wsDeleteResult}>
+          <WebSocketDelete
+              onError={setWsDeleteError}
+              onResult={setWsDeleteResult}
           />
         </Tile>
 

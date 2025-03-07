@@ -97,6 +97,10 @@ const WebSocketMessages = ({onError, error}) => {
             setMessages(prev => [...prev, message]);
         });
 
+        newSocket.on('messageDeleted', (data) => {
+            setMessages(prev => prev.filter(message => message.id !== data.messageId));
+        });
+
         newSocket.on('connect_error', (error) => {
             onError('WebSocket connection error: ' + error.message);
         });
@@ -131,7 +135,7 @@ const WebSocketMessages = ({onError, error}) => {
         <div>
             {error && (
                 <RetryButton type="button" onClick={initSocket}>
-                    Retry
+                    Reconnect
                 </RetryButton>
             )}
             {!error && (

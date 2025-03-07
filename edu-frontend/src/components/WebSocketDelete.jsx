@@ -26,15 +26,15 @@ const ButtonContainer = styled.div`
 
 const Button = styled.button`
   padding: 8px 16px;
-  background-color: #2d5a27;
+  background-color: #4c1d1d;
   color: #e4e4e4;
-  border: 1px solid #3d7a37;
+  border: 1px solid #822727;
   border-radius: 4px;
   cursor: pointer;
   flex-grow: 1;
 
   &:hover {
-    background-color: #3d7a37;
+    background-color: #822727;
   }
 `;
 
@@ -54,20 +54,27 @@ const RetryButton = styled.button`
   }
 `;
 
-const WebSocketSender = ({ onError, onResult, error }) => {
-  const [content, setContent] = useState('');
-  const [username, setUsername] = useState('');
+const WebSocketDelete = ({ onError, onResult }) => {
+  const [messageId, setMessageId] = useState('');
   const [socket, setSocket] = useState(null);
 
   const initSocket = () => {
     const token = localStorage.getItem('token');
     const newSocket = io('/', {
-      auth: {token}
+      auth: { token }
     });
 
-    // newSocket.on('message', (message) => {
-    //   setMessages(prev => [...prev, message]);
+    // newSocket.on('messageDeleted', (data) => {
+    //   onResult({
+    //     status: 200,
+    //     body: { messageId: data.messageId }
+    //   });
+    //   setMessageId('');
     // });
+
+    newSocket.on('error', (error) => {
+      onError(error.message);
+    });
 
     newSocket.on('connect_error', (error) => {
       onError('WebSocket connection error: ' + error.message);
@@ -79,12 +86,10 @@ const WebSocketSender = ({ onError, onResult, error }) => {
 
     setSocket(newSocket);
     return newSocket;
-  }
+  };
 
-  // Initialize socket connection
   useEffect(() => {
-    let newSocket = initSocket()
-
+    let newSocket = initSocket();
     return () => {
       newSocket.close();
     };
@@ -92,50 +97,36 @@ const WebSocketSender = ({ onError, onResult, error }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if(!socket.connected){
-      onError('WebSocket connection is not established');
-      return;
-    }
-
     try {
-      const payload = { content };
-      // if (username.trim()) {
-      //   payload.username = username.trim();
-      // }
-      socket.emit('message', payload);
-      onResult({ sent: true, payload });
+      if (!socket?.connected) {
+        onError('WebSocket connection is not established');
+        return;
+      }
+      const payload = { messageId };
+      socket.emit('deleteMessage', payload);
+      onResult({ sent: true, payload});
       onError('');
-      setContent('');
-      setUsername('');
     } catch (error) {
-      onError(`Failed to send message via WebSocket: ${error.message}`);
+      onError(`Failed to delete message via WebSocket: ${error.message}`);
     }
   };
 
   return (
     <Form onSubmit={handleSubmit}>
-      {/*<Input*/}
-      {/*  type="text"*/}
-      {/*  value={username}*/}
-      {/*  onChange={(e) => setUsername(e.target.value)}*/}
-      {/*  placeholder="Enter username (optional)"*/}
-      {/*/>*/}
       <Input
-        type="text"
-        value={content}
-        onChange={(e) => setContent(e.target.value)}
-        placeholder="Enter message content"
+        type={"text"}
+        value={messageId}
+        onChange={(e) => setMessageId(e.target.value)}
+        placeholder="Enter message ID"
       />
       <ButtonContainer>
-        <Button type="submit">Send Message</Button>
-        {error && (
-          <RetryButton type="button" onClick={initSocket}>
-            Reconnect
-          </RetryButton>
-        )}
+      <Button type="submit">Delete Message</Button>
+      <RetryButton type="button" onClick={initSocket}>
+        Reconnect
+      </RetryButton>
       </ButtonContainer>
     </Form>
   );
 };
 
-export default WebSocketSender;
+export default WebSocketDelete;
