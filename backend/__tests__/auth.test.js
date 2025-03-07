@@ -1,17 +1,23 @@
 import request from 'supertest';
-import { app } from '../src/index.js';
-import { userService } from '../src/data/dataServices.js';
+import { httpServer } from '../src/index.js';
 import jwt from 'jsonwebtoken';
+import { JWT_SECRET } from '../src/middleware/auth.js';
+
 
 describe('Authentication API', () => {
+  beforeAll(() => {
+  });
+
+  afterAll((done) => {
+      httpServer.close(done);
+  });
+
   beforeEach(() => {
-    // Clear users before each test
-    userService.users.clear();
   });
 
   describe('POST /api/auth/register', () => {
     it('should register a new user successfully', async () => {
-      const response = await request(app)
+      const response = await request(httpServer)
         .post('/api/auth/register')
         .send({
           username: 'testuser',
@@ -23,13 +29,15 @@ describe('Authentication API', () => {
       expect(response.body).toHaveProperty('username', 'testuser');
 
       // Verify token
-      const decoded = jwt.verify(response.body.token, process.env.JWT_SECRET || 'your-secret-key');
+      console.log('[DEBUG_LOG] Token from response:', response.body.token);
+      console.log('[DEBUG_LOG] JWT_SECRET in test:', JWT_SECRET);
+      const decoded = jwt.verify(response.body.token, JWT_SECRET);
       expect(decoded).toHaveProperty('username', 'testuser');
     });
 
     it('should not allow duplicate usernames', async () => {
       // Register first user
-      await request(app)
+      await request(httpServer)
         .post('/api/auth/register')
         .send({
           username: 'testuser',
@@ -37,7 +45,7 @@ describe('Authentication API', () => {
         });
 
       // Try to register the same username
-      const response = await request(app)
+      const response = await request(httpServer)
         .post('/api/auth/register')
         .send({
           username: 'testuser',
@@ -50,9 +58,9 @@ describe('Authentication API', () => {
   });
 
   describe('POST /api/auth/login', () => {
-    beforeEach(async () => {
-      // Create a test user before each login test
-      await request(app)
+    beforeAll(async () => {
+      // Create a test user before login test
+      await request(httpServer)
         .post('/api/auth/register')
         .send({
           username: 'testuser',
@@ -61,7 +69,7 @@ describe('Authentication API', () => {
     });
 
     it('should login successfully with correct credentials', async () => {
-      const response = await request(app)
+      const response = await request(httpServer)
         .post('/api/auth/login')
         .send({
           username: 'testuser',
@@ -74,7 +82,7 @@ describe('Authentication API', () => {
     });
 
     it('should fail with incorrect password', async () => {
-      const response = await request(app)
+      const response = await request(httpServer)
         .post('/api/auth/login')
         .send({
           username: 'testuser',
@@ -86,7 +94,7 @@ describe('Authentication API', () => {
     });
 
     it('should fail with non-existent username', async () => {
-      const response = await request(app)
+      const response = await request(httpServer)
         .post('/api/auth/login')
         .send({
           username: 'nonexistent',

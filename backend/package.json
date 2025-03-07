@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node src/index.js",
     "dev": "nodemon src/index.js",
-    "test": "jest",
+    "test": "node --experimental-vm-modules node_modules/.bin/jest",
     "generate-secret": "node scripts/generate-secret.js"
   },
   "dependencies": {
@@ -25,13 +25,5 @@
     "nodemon": "^3.0.1",
     "supertest": "^6.3.3",
     "socket.io-client": "^4.7.1"
-  },
-  "jest": {
-    "testEnvironment": "node",
-    "transform": {},
-    "extensionsToTreatAsEsm": [".js"],
-    "moduleNameMapper": {
-      "^(\\.{1,2}/.*)\\.js$": "$1"
-    }
   }
 }

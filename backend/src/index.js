@@ -83,4 +83,4 @@ httpServer.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
 
-export { app, io };
+export { app, io, httpServer };

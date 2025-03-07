@@ -1,10 +1,6 @@
 export default {
-  testEnvironment: 'node',
   transform: {},
-  extensionsToTreatAsEsm: ['.js'],
-  moduleNameMapper: {
-    '^(\\.{1,2}/.*)\\.js$': '$1',
-  },
-  testMatch: ['**/__tests__/**/*.test.js'],
-  setupFiles: ['dotenv/config'],
+  testEnvironment: 'node',
+  //verbose: true,
+  testMatch: ["**/__tests__/**/*.js?(x)", "**/?(*.)+(spec|test).js?(x)"],
 };

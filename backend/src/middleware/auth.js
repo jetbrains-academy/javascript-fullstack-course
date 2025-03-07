@@ -2,17 +2,9 @@ import dotenv from 'dotenv';
 import jwt from 'jsonwebtoken';
 import { userService } from '../data/dataServices.js';
 
-// Validate JWT secret configuration
 dotenv.config();
-const JWT_SECRET = process.env.JWT_SECRET;
-console.log(`JWT_SECRET == ${process.env.JWT_SECRET}`);
-
-if (!JWT_SECRET || JWT_SECRET === 'your-super-secret-key-change-in-production' || JWT_SECRET.length < 32) {
-  console.error('WARNING: JWT_SECRET is not properly configured. Use scripts/generate-secret.js to generate a secure secret.');
-  if (process.env.NODE_ENV === 'production') {
-    throw new Error('JWT_SECRET must be properly configured in production');
-  }
-}
+export const JWT_SECRET = process.env.JWT_SECRET;
+// console.log('[DEBUG_LOG] JWT_SECRET in auth middleware:', JWT_SECRET);
 
 export const generateToken = (username) => {
   return jwt.sign({ username }, JWT_SECRET, { expiresIn: '24h' });

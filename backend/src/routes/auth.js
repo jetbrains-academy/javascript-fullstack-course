@@ -8,11 +8,9 @@ const router = express.Router();
 // Register new user
 router.post('/register', async (req, res) => {
   try {
-    console.log('Registration request received:', req.body);
     const { username, password } = req.body;
 
     if (!username || !password) {
-      console.log('Registration failed: missing username or password');
       return res.status(400).json({ message: 'Username and password are required' });
     }
 
@@ -22,15 +20,12 @@ router.post('/register', async (req, res) => {
     // Create user
     console.log('Attempting to create user:', { username });
     const user = await userService.createUser(username, hashedPassword);
-    console.log('User created successfully:', user);
 
     // Generate token
     const token = generateToken(username);
-    console.log('Token generated successfully');
 
     res.status(201).json({ token, username: user.username });
   } catch (error) {
-    console.error('Registration error:', error);
     if (error.message === 'Username already exists') {
       return res.status(409).json({ message: error.message });
     }
