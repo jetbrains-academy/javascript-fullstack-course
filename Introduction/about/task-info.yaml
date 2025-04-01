@@ -1,0 +1,8 @@
+type: theory
+custom_name: About this course
+files:
+  - name: task.js
+    visible: true
+  - name: images/chat.png
+    visible: false
+    is_binary: true

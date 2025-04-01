@@ -1,0 +1,23 @@
+type: edu
+custom_name: New route handler
+files:
+  - name: test/test.js
+    visible: false
+    propagatable: false
+  - name: src/index.js
+    visible: true
+    placeholders:
+      - offset: 220
+        length: 18
+        placeholder_text: /* check if url is /sum */
+      - offset: 250
+        length: 95
+        placeholder_text: /* Handle this request */
+  - name: package.json
+    visible: true
+  - name: images/scheme.png
+    visible: false
+    is_binary: true
+  - name: images/scheme_dark.png
+    visible: false
+    is_binary: true
