@@ -22,7 +22,7 @@ Then a text message `Hello, World!` is added to the response.
 
 In case of any other URLs, the server returns the message `Page Not Found` with the code `404`.
 
-<div style="text-align: center; width:80%; margin: 0 auto;">
+<div style="text-align: center; width:80%; margin: 0 auto; max-width: 900px;">
 <img src="images/http_codes.png">
 </div>
 
@@ -47,7 +47,7 @@ Look through the [package.json](file://GettingStartedNode/hello_world/package.js
 The field names are quite meaningful there so you shouldn't get confused.
 
 The most important section for us right now is `scripts`.
-<div style="text-align: center; width:60%;">
+<div style="text-align: center; width:60%; max-width: 500px;">
 <img src="images/script_start.png">
 </div>
 
@@ -58,7 +58,7 @@ Here we can define specific commands for our Node.js project. This is most often
 To run this application, click ![](images/run.svg) next to the `start` script in the IDE interface. The same can be done in the terminal with command `npm start`.
 
 You will see the similar output:
-<div style="text-align: center; width:60%;">
+<div style="text-align: center; width:60%; max-width: 500px;">
 <img src="images/npm_start_log.png">
 </div>
 

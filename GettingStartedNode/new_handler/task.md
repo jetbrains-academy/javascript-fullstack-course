@@ -7,7 +7,9 @@ Add one more route, `/sum`, which for now should only return the text `'TODO in 
 
 Later on, we will actually implement this route in a slightly different way, but for now, let's start like this.
 
+<div style="text-align: center; max-width: 900px; margin: 0 auto;">
 <img src="images/scheme.png">
+</div>
 
 Pressing the `Check` button in below this text, you can verify your solution with our automatic testing system, 
 but you can always check how your program works as it was shown in [Hello world](course://GettingStartedNode/hello_world) task.
