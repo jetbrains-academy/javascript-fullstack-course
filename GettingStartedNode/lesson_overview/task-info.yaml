@@ -1,5 +1,5 @@
 type: theory
-custom_name: Lesson Overview
+custom_name: Lesson overview
 files:
   - name: task.js
     visible: true
