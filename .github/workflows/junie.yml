@@ -10,6 +10,6 @@ on:
 
 jobs:
   call-workflow-passing-data:
-    uses: JetBrains/junie-workflows/.github/workflows/ej-issue.yml@main
+    uses: jetbrains-junie/junie-workflows/.github/workflows/ej-issue.yml@main
     secrets:
       GCP_DOCKER_JUNIE_KEY: "${{ secrets.GCP_DOCKER_JUNIE_KEY }}"
