@@ -2,16 +2,16 @@ Before we start, let's briefly discuss a typical web app architecture.
 
 A web application consists of two main parts:
 - Frontend (Client-Side): The part users interact with, usually built with tools like _HTML, CSS, and JavaScript frameworks_ (e.g., React).
-- Backend (Server-Side): Provides logic and data management for the app. 
-It handles API requests, data storage in databases, and communication between the client and server. Often built with tools like _Node.js_ and _Express_.
+- Backend (Server-Side): Handles the app's logic and data management.
+  It handles API requests, stores data in databases, and facilitates communication between the client and the server. It's often built with tools like _Node.js_ and _Express_.
 
 For our chat app:
-- The frontend will display messages and offer an interface to send new ones.
-- The backend will manage user authentication and real-time messages communication. 
+- The frontend will display messages and provide an interface for sending new messages.
+- The backend will handle user authentication and enable real-time message communication. 
 
 ## TODO: PICTURE!
 
-These two parts communicate through **[RESTful](https://en.wikipedia.org/wiki/REST) API** to exchange data between the server and the client.
+These two parts communicate through a **[RESTful](https://en.wikipedia.org/wiki/REST) API**, which facilitates the exchange of data between the server and the client.
 
 A RESTful API is a way to communicate using standard HTTP methods (GET, POST, ...) where data is accessed through URLs (endpoints), 
 and responses are typically in JSON format. It’s simple, stateless, and widely used for building web services.
@@ -21,7 +21,7 @@ In our app, the _frontend_ will use RESTful API **endpoints** offered by the _ba
 - Backend Response: The backend processes the message and broadcasts it to all users.
 
 ### Technology stack
-In web development, you may often hear such a concept as _technology stack_. Some of the most popular ones even have well-known acronyms such as MERN:
+In web development, you may often hear such a concept as _technology stack_. Some of the most popular stacks have well-known acronyms, such as MERN:
 - **M**ongoDB is used as a database.
 - **E**xpress.js is a framework for building RESTful APIs with Node.js.
 - **R**eact is a front-end JavaScript library.
@@ -31,16 +31,18 @@ In web development, you may often hear such a concept as _technology stack_. Som
 <img src="images/mern.png">
 </div>
 
-Such a description conveniently demonstrates which technologies are used for which parts of the project.
-Moreover, if technologies are independent of each other, we can replace, for example, MongoDB with another database or React with another frontend framework.
+This naming convention conveniently demonstrates which technologies are used for different parts of the project.
+Moreover, if technologies are independent of each other, we can replace, for example, MongoDB with another database, 
+or React with a different frontend framework.
 
-We will be paying little attention to the database in our course, so we can say that we will be using **ERN-stack**.
+In this course, we will pay little attention to the database layer. 
+Therefore, we can say that we will be working with an **ERN-stack**.
 
 ### From the backend to the frontend
-In the first half of this course, we'll focus on building the backend. 
-The educational frontend will be provided to simplify development and allow convenient testing, you are free to explore it. 
+In the first half of this course, we'll focus on building the backend.
+To simplify development and for convenient testing, an educational frontend will be provided for you. You are free to explore it! 
 
-By the second half of the course, you’ll have a clear understanding of how the backend works, and you'll be ready for the frontend development.
+By the second half of the course, you’ll have a clear understanding of how the backend works, and then you'll be ready to dive into frontend development.
 
 # TODO: update this file before release
 
