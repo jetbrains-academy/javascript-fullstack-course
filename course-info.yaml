@@ -8,6 +8,7 @@ programming_language: JavaScript
 content:
   - Introduction
   - GettingStartedNode
+  - GettingStartedExpress
 additional_files:
   - name: package.json
   - name: utils/utils.js

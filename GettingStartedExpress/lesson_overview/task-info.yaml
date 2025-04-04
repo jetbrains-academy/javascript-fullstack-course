@@ -1,0 +1,10 @@
+type: theory
+custom_name: Lesson overview
+files:
+  - name: images/express_dark.svg
+    visible: false
+  - name: images/express.svg
+    visible: false
+  - name: backend/src/index.js
+    visible: true
+    propagatable: false
