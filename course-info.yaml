@@ -15,4 +15,5 @@ additional_files:
   - name: LICENSE
   - name: jest.config.js
   - name: jsconfig.json
+  - name: run/Template Jest.run.xml
 yaml_version: 2
