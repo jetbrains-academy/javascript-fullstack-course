@@ -18,7 +18,7 @@ files:
           task: sum_route_implementation
           file: backend/src/index.js
           placeholder: 1
-          is_visible: false
+        is_visible: false
   - name: backend/package.json
     visible: true
   - name: images/run_dark.svg
