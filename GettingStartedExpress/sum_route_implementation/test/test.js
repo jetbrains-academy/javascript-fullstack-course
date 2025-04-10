@@ -1,5 +1,4 @@
 import request from 'supertest';
-// const {httpServer} = require('../src/index.js');
 import { httpServer } from '../backend/src/index.js';
 
 import {customizeError} from '#utils/utils'
@@ -67,7 +66,3 @@ test('Test /wrong_url route', async () => {
         throw e
     }
 });
-
-test('Dummy test', () => {
-
-})
