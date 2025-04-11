@@ -9,6 +9,7 @@ content:
   - Introduction
   - GettingStartedNode
   - GettingStartedExpress
+  - TestingDebugging
 additional_files:
   - name: package.json
   - name: package-lock.json

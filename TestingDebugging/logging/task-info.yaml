@@ -1,0 +1,51 @@
+type: edu
+custom_name: Logging
+files:
+  - name: test/test.js
+    visible: false
+    propagatable: false
+  - name: backend/src/index.js
+    visible: true
+    placeholders:
+      - offset: 81
+        length: 28
+        placeholder_text: // Add the import here
+      - offset: 192
+        length: 24
+        placeholder_text: // Add the morgan middleware to the app
+  - name: backend/__tests__/sum.test.js
+    visible: true
+  - name: backend/__tests__/concat.test.js
+    visible: true
+  - name: backend/package.json
+    visible: true
+  - name: package.json
+    visible: true
+  - name: frontend/src/App.css
+    visible: true
+  - name: frontend/src/App.jsx
+    visible: true
+  - name: frontend/src/main.jsx
+    visible: true
+  - name: frontend/src/index.css
+    visible: true
+  - name: frontend/src/components/Tile.jsx
+    visible: true
+  - name: frontend/src/components/StrConcat.jsx
+    visible: true
+  - name: frontend/src/components/SumCalculator.jsx
+    visible: true
+  - name: frontend/public/academy.svg
+    visible: true
+  - name: frontend/index.html
+    visible: true
+  - name: frontend/package.json
+    visible: true
+  - name: frontend/vite.config.js
+    visible: true
+  - name: images/logs.png
+    visible: false
+    is_binary: true
+  - name: images/logs_dark.png
+    visible: false
+    is_binary: true
