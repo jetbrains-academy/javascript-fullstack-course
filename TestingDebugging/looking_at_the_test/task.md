@@ -1,24 +1,24 @@
-If tests are so useful, let's add them to our project! It only required a couple of changes.
+If tests are so useful, let's add them to our project! It only requires a few small changes.
 
 ### Test file
-In the `backend/__tests__/sum.test.js` file you can find 
-test description for the `/sum` route created in the previous lesson.
+In the `backend/__tests__/sum.test.js` file, you can find
+a test description for the `/sum` route we created in the previous lesson.
 
 At the beginning of the file, you can find two imports:
-- The `request` from `supertest` library, which is used to make HTTP requests to our application's server for testing purposes.
-- The `httpServer` object that will be tested from our application. 
-  That's why we added `export { httpServer }` to the end of `index.js`.
+- `request` from the `supertest` library, which is used to make HTTP requests to our application's server during testing.
+- The `httpServer` object from our application, which will be tested.
+  This is why we added `export { httpServer }` at the end of `index.js`.
 
-Next, you can find some special methods that may be useful later. 
-Right now, for example, the `afterAll` method allows us to automatically terminate our web application after testing. 
-Since it automatically runs after the `httpServer` import is done, we shouldn't run it explicitly.
+You will also notice some special methods included in the file that can be useful later.
+For example, the `afterAll` method allows us to automatically terminate the web application after testing.
+Since web application runs automatically after the `httpServer` import is completed, we don't need to run it explicitly in the `beforeAll`.
 
-And below that there is a nested test suite for testing the `GET /sum` endpoint:
+Below these imports, there is a nested test suite for testing the `GET /sum` endpoint:
 ```
 describe('GET /sum', () => { ... });
 ```
 
-Where each suitcase is described like this:
+Each test case is described like this:
 ```
 it('should return the sum of two valid numbers', async () => { ... });
 ```
@@ -26,11 +26,11 @@ it('should return the sum of two valid numbers', async () => { ... });
 ---
 
 ### Running tests
-You can run all tests at once just clicking the ![](images/runAll.svg) button opposite the `describe` block or 
-run specific test with ![](images/run.svg) button opposite the `it` block.
+You can run all the tests at once by clicking the ![](images/runAll.svg) button next to the `describe` block, or
+you can run a specific test by clicking the ![](images/run.svg) button next to the `it` block.
 
-You will see the output of the tests in the toolwindow at the bottom, 
-and next to each test you will see a ![](images/runSuccess.svg) or ![](images/runError.svg) icon depending on whether the test is passed or failed. 
+The output of the tests will appear in the tool window at the bottom of your IDE.
+Next to each test, you will see a ![](images/runSuccess.svg) or ![](images/runError.svg) icon, depending on whether the test passed or failed. 
 
 __Try breaking the `/sum` handler and see how the tests behave!__
 
@@ -41,10 +41,10 @@ __Try breaking the `/sum` handler and see how the tests behave!__
 ---
 
 ### Project configuration file
-As you may have noticed, everything already works as it is. 
-So this optional step only adds convenience and the ability to automate test launching even without IDE.
+As you may have noticed, everything is already configured to work out of the box.
+However, this optional step adds some convenience and allows for automated test launching even outside the IDE.
 
-Look at the `backend/package.json` file. In addition to the new dependencies, the `jest` block has been added there:
+Take a look at the `backend/package.json` file. In addition to the new dependencies, a `jest` block has been added:
 ```json
   "jest": {
     "testEnvironment": "node",
@@ -53,42 +53,42 @@ Look at the `backend/package.json` file. In addition to the new dependencies, th
 ```
 
 <img src="images/jest.ico" style="height: 1em; vertical-align: middle;" alt="Jest Icon">
-<a href="https://jestjs.io/">Jest</a> is a testing framework for JavaScript. 
-Running tests as it shown above, we already used it.  
+<a href="https://jestjs.io/">Jest</a> is the testing framework we're using for JavaScript.
+Running the tests as shown above, we were already using Jest under the hood.  
 
-In the `backend/package.json` we can specify for the whole project which files should be considered as test files and 
-run all tests for the whole project at once by clicking the ![](images/run.svg) button.
+In the `backend/package.json` file, we can specify which files will be treated as test files.
+This configuration allows you to run all tests in the project at once by clicking the ![](images/run.svg) button.
 
 <div class="hint" title="Path patterns">
 
-  You may notice that the path to the test files in the example above is specified as a template `"<rootDir>/__tests__/**/*.test.js"`.
-  It should be read as follows:
-  - `<rootDir>` — refers to the root directory of the project this `package.json` file is located.
-  - `__tests__` — folder name.
-  - `**/` — matches any number of intermediate nested directories.
-  - `*.test.js` — matches all files with `.test.js` extension.
+  You may notice that the path template for test files in the example above is defined as `"<rootDir>/__tests__/**/*.test.js"`.
+  Here’s what each part means:
+  - `<rootDir>`: Refers to the root directory where the current `package.json` file is located.
+  - `__tests__`: Specifies the folder name.
+  - `**/`: Matches any number of intermediate, nested directories.
+  - `*.test.js`: Matches all files with the `.test.js` extension.
 </div>
 
 
 <div class="hint" title="Running tests with CLI">
 
-  If you want to run the tests manually in the terminal, execute in the `backend` directory the following command:
+  If you want to run the tests manually in the terminal, navigate to the `backend` directory and execute the following command:
   ```shell
   NODE_OPTIONS="--experimental-vm-modules" npx jest
   ```
-  Parameter `--experimental-vm-modules` is [important](https://jestjs.io/docs/ecmascript-modules) for Jest to work with a Node.js project.
-  Using the IDE's graphical interface in this course, you don't have to think about it. We set everything up for you. 
+  The `--experimental-vm-modules` parameter is [important](https://jestjs.io/docs/ecmascript-modules) because it allows Jest to work with a Node.js project.
+  However, while using the IDE's graphical interface in this course, you don’t need to worry about this — we’ve already taken care of this configuration for you. 
 </div>
 
 ---
 
 ### Tests in this course tasks
-As you already know, there are auto-checking tasks in this course. 
-Under the hood, they are implemented in almost the same way, but the source code is hidden from you.
+As you may already know, this course includes auto-checking tasks using tests under the hood.
+These tests are implemented in much the same way as the examples you’ve seen, but their source code is hidden from you.
 
-To immerse you in the atmosphere of real development, in the future, 
-most of the tests will be duplicated to you in the `__tests__` directory, 
-and you can always take a look at them and run them by hand if you want.
+To give you a sense of real-world development practices, most of the test files for future
+tasks will be duplicated in the `__tests__` directory.
+This way, you can always take a closer look and run them manually if you want to dive deeper into the testing process.
 
 <style>
 img {

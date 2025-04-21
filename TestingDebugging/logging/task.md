@@ -1,17 +1,17 @@
-Now it's time to add logger middleware to our project. It can be very handy later.
+Now it's time to add logger middleware to our project — it will be very useful later.
 
 ### Task
 Add the [morgan](https://expressjs.com/en/resources/middleware/morgan.html) logging middleware to the project.
 
-This can be done in three simple steps. After doing it, run the application, 
-use different routes with education frontend or without, and look at the output.
+You can achieve this in just three simple steps. Once you’ve implemented it, run the application,
+try out different routes (with or without the educational frontend), and observe the output.
 
 <div style="text-align: center; width:80%; max-width: 700px;">
 <img src="images/logs.png">
 </div>
 
 #### 1. Import 
-Add import at the beginning of the file.
+Import `morgan` at the beginning of your file.
 ```js
 import morgan from "morgan";
 ```
@@ -23,7 +23,7 @@ app.use(morgan('tiny'));
 ```
 
 #### 3. Dependencies
-In a real project, you should also add libraries into `package.json`. In this task, we've already done it for you:
+In a real project, you'd also need to add any required libraries to `package.json`. In this task, we've already done it for you:
 ```json
   "dependencies": {
     ...,
