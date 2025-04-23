@@ -15,7 +15,7 @@ That's why this approach isn't used in real-world projects.
 <img src="images/express.svg">
 </div>
 
-A fast and easy way to streamline your work in Node.js is _Express_.
+A fast and easy way to streamline your work in Node.js is _[Express.js](https://expressjs.com/)_.
 Express.js is a framework designed to simplify the process of building web servers and APIs.
 It provides tools and features to handle HTTP routes, middleware, request/response handling, and more.
 With Express.js, you can quickly create robust web applications while avoiding unnecessary boilerplate code.

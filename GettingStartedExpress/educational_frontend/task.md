@@ -17,14 +17,14 @@ Additionally, there’s a common **package.json** file at the root level, which 
 ```text
 .
 ├── backend 
-│   ├── package.json  // backend configuration file
+│   ├── package.json  // backend config
 │   └── src
 │       └── index.js
 ├── frontend
 │   ├── ...
-│   ├── package.json  // frontend configuration file 
+│   ├── package.json  // frontend config 
 │   └── ...
-└── package.json      // common configuration file
+└── package.json      // common config
 ```
 
 If you're curious, you can explore how the frontend is designed for each task. 

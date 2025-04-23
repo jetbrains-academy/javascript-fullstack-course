@@ -2,7 +2,7 @@ Let's look at the simplest Node.js project.
 
 ```text
 .
-├── package.json  // project configuration file
+├── package.json  // project config file
 └── src
    └── index.js   // main file 
 ```
@@ -71,7 +71,7 @@ You can also try visiting any other URL, like http://localhost:8000/any, where y
 🎉 Yay, you've written your first web application. It has a backend that can handle requests from the browser. Doesn't seem too hard, right?
 
 ### Stopping the project
-Remember to always stop your application when you're done. Click the ![](images/stop.svg) button or press `^C` (Ctrl+C).
+Remember to always stop your application when you're done. Click the ![](images/stop.svg) button in the tool window at the bottom of your IDE or press `^C` (Ctrl+C).
 
 <style>
 img {
