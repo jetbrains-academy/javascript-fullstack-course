@@ -1,0 +1,9 @@
+type: theory
+custom_name: Lesson overview
+files:
+  - name: task.js
+    visible: true
+  - name: images/nodejs_dark.svg
+    visible: false
+  - name: images/nodejs.svg
+    visible: false

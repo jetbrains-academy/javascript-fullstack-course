@@ -1,0 +1,22 @@
+type: marketplace
+title: ERN-stack course
+language: English
+summary: |-
+  <p>TODO (1)</p>
+  <p>TODO (2)</p>
+programming_language: JavaScript
+content:
+  - Introduction
+  - GettingStartedNode
+  - GettingStartedExpress
+  - TestingDebugging
+additional_files:
+  - name: package.json
+  - name: package-lock.json
+  - name: utils/utils.js
+  - name: README.md
+  - name: LICENSE
+  - name: jest.config.js
+  - name: jsconfig.json
+  - name: run/Template Jest.run.xml
+yaml_version: 2

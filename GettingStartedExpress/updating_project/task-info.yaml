@@ -1,0 +1,24 @@
+type: theory
+custom_name: Updating the project
+files:
+  - name: images/express_dark.svg
+    visible: false
+  - name: images/express.svg
+    visible: false
+  - name: backend/package.json
+    visible: true
+  - name: backend/src/index.js
+    visible: true
+    propagatable: false
+  - name: images/run_dark.svg
+    visible: false
+  - name: images/run.svg
+    visible: false
+  - name: images/stop.svg
+    visible: false
+  - name: images/stop_dark.svg
+    visible: false
+  - name: images/rerun.svg
+    visible: false
+  - name: images/rerun_dark.svg
+    visible: false

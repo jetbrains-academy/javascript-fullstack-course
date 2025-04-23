@@ -1,0 +1,8 @@
+type: theory
+custom_name: Web app architecture
+files:
+  - name: task.js
+    visible: true
+  - name: images/mern.png
+    visible: false
+    is_binary: true
