@@ -1,0 +1,17 @@
+type: theory
+custom_name: Interface vs implementation
+files:
+  - name: backend/src/index.js
+    visible: true
+  - name: images/storage_boxes_dark.png
+    visible: false
+    is_binary: true
+  - name: images/storage_boxes.png
+    visible: false
+    is_binary: true
+  - name: images/save_fetch_message.png
+    visible: false
+    is_binary: true
+  - name: images/save_fetch_message_dark.png
+    visible: false
+    is_binary: true

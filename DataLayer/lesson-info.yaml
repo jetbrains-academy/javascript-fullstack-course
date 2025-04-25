@@ -1,0 +1,7 @@
+type: framework
+custom_name: Data Layer
+content:
+  - lesson_overview
+  - interface_implementation
+  - create_user
+  - message_service
