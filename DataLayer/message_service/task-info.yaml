@@ -31,10 +31,10 @@ files:
       - offset: 833
         length: 29
         placeholder_text: // add it to the storage
-      - offset: 951
-        length: 28
+      - offset: 941
+        length: 14
         placeholder_text: "[]"
-      - offset: 1060
+      - offset: 1036
         length: 176
         placeholder_text: // delete the message with messageId from the storage
   - name: frontend/src/App.css

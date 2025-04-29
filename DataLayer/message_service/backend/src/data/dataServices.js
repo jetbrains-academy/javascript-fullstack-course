@@ -36,8 +36,8 @@ export const messageService = {
         return message;
     },
 
-    getMessages: async (limit = 50) => {
-        return store.messages.slice(-limit);
+    getMessages: async () => {
+        return store.messages;
     },
 
     // Optional task

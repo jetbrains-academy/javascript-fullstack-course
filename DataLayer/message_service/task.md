@@ -28,7 +28,8 @@ b0b2af55-41f4-4f9d-a6aa-0a91b31e93d7
 ```
 
 #### getMessage
-Method should return an array of last `limit` messages from the `messages` array as the result.
+Method should return the `messages` array as the result. 
+Due to middleware `express.json()` we added before, we don't have to think about converting JavaScript array to JSON.
 
 <div class="hint">
 

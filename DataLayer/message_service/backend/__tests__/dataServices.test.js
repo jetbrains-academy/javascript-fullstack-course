@@ -63,7 +63,7 @@ describe('Test data layer', () => {
                 })
         });
 
-        it('Test get messages with default limit', async () => {
+        it('Test get messages', async () => {
             await messageService.addMessage('John', 'Message 1');
             await messageService.addMessage('John', 'Message 2');
             return messageService.getMessages()
@@ -71,18 +71,6 @@ describe('Test data layer', () => {
                     expect(messages.length).toBe(2)
                     expect(messages[0].content).toBe('Message 1')
                     expect(messages[1].content).toBe('Message 2')
-                })
-        });
-
-        it('Test get messages with custom limit', async () => {
-            await messageService.addMessage('John', 'Message 1');
-            await messageService.addMessage('John', 'Message 2');
-            await messageService.addMessage('John', 'Message 3');
-            return messageService.getMessages(2)
-                .then(messages => {
-                    expect(messages.length).toBe(2)
-                    expect(messages[0].content).toBe('Message 2')
-                    expect(messages[1].content).toBe('Message 3')
                 })
         });
 

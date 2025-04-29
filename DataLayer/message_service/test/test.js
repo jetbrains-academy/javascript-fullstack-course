@@ -39,7 +39,7 @@ test('Test add new message', async () => {
     }
 });
 
-test('Test get messages with default limit', async () => {
+test('Test get messages', async () => {
     try {
         await messageService.addMessage('John', 'Message 1')
         await messageService.addMessage('John', 'Message 2')
@@ -50,24 +50,8 @@ test('Test get messages with default limit', async () => {
                 expect(messages[1].content).toBe('Message 2')
             })
     } catch (e) {
-        customizeError(e, 'Failed to get messages with default limit: ', true)
+        customizeError(e, 'Failed to get messages', true)
         throw e
     }
 });
 
-test('Test get messages with custom limit', async () => {
-    try {
-        await messageService.addMessage('John', 'Message 1')
-        await messageService.addMessage('John', 'Message 2')
-        await messageService.addMessage('John', 'Message 3')
-        await messageService.getMessages(2)
-            .then(messages => {
-                expect(messages.length).toBe(2)
-                expect(messages[0].content).toBe('Message 2')
-                expect(messages[1].content).toBe('Message 3')
-            })
-    } catch (e) {
-        customizeError(e, 'Failed to get messages with custom limit: ', true)
-        throw e
-    }
-});
