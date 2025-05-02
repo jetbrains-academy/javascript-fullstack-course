@@ -1,0 +1,82 @@
+type: edu
+custom_name: Messages router
+files:
+  - name: backend/src/routes/messages.js
+    visible: true
+    placeholders:
+      - offset: 200
+        length: 52
+        placeholder_text: // Get messages from the message service
+      - offset: 261
+        length: 26
+        placeholder_text: // Send them as a JSON-response
+      - offset: 523
+        length: 33
+        placeholder_text: // Get the content field from the request body
+      - offset: 680
+        length: 110
+        placeholder_text: // Check the content parameter
+      - offset: 800
+        length: 67
+        placeholder_text: // Add a message to the message service
+      - offset: 876
+        length: 37
+        placeholder_text: // Respond with 201 code and message as a content
+      - offset: 1123
+        length: 32
+        placeholder_text: // Get the message id
+      - offset: 1164
+        length: 62
+        placeholder_text: // Delete the message using message service
+      - offset: 1236
+        length: 140
+        placeholder_text: "// Respond with code 204 on success, or code 404 and an error\
+      \ message otherwise."
+  - name: images/routers.png
+    visible: false
+    is_binary: true
+  - name: images/routers_dark.png
+    visible: false
+    is_binary: true
+  - name: test/test.js
+    visible: false
+    propagatable: false
+  - name: backend/src/data/dataServices.js
+    visible: true
+  - name: backend/__tests__/dataServices.test.js
+    visible: true
+  - name: backend/package.json
+    visible: true
+  - name: frontend/src/App.css
+    visible: true
+  - name: frontend/src/App.jsx
+    visible: true
+  - name: frontend/src/main.jsx
+    visible: true
+  - name: frontend/src/index.css
+    visible: true
+  - name: frontend/src/components/Tile.jsx
+    visible: true
+  - name: frontend/public/academy.svg
+    visible: true
+  - name: frontend/index.html
+    visible: true
+  - name: frontend/package.json
+    visible: true
+  - name: frontend/vite.config.js
+    visible: true
+  - name: package.json
+    visible: true
+  - name: backend/src/index.js
+    visible: true
+  - name: frontend/src/components/GetMessages.jsx
+    visible: true
+  - name: frontend/src/components/PostMessage.jsx
+    visible: true
+  - name: frontend/src/components/DeleteMessage.jsx
+    visible: true
+  - name: images/messages.gif
+    visible: false
+    is_binary: true
+  - name: backend/__tests__/messages.test.js
+    visible: true
