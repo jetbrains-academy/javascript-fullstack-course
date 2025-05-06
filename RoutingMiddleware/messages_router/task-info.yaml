@@ -21,7 +21,7 @@ files:
         placeholder_text: // Add a message to the message service
       - offset: 876
         length: 37
-        placeholder_text: // Respond with 201 code and message as a content
+        placeholder_text: // Respond with the 201 code and a message as the content
       - offset: 1123
         length: 32
         placeholder_text: // Get the message id
@@ -30,7 +30,7 @@ files:
         placeholder_text: // Delete the message using message service
       - offset: 1236
         length: 140
-        placeholder_text: "// Respond with code 204 on success, or code 404 and an error\
+        placeholder_text: "// Respond with the 204 code on success, or 404 with an error\
       \ message otherwise."
   - name: images/routers.png
     visible: false

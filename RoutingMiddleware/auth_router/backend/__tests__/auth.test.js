@@ -59,7 +59,7 @@ describe('Authentication API', () => {
                 });
         });
 
-        it('should login successfully with correct credentials', async () => {
+        it('should log in successfully with correct credentials', async () => {
             const response = await request(httpServer)
                 .post('/api/auth/login')
                 .send({

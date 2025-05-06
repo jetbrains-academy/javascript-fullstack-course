@@ -1,8 +1,8 @@
-You can see opened `backend/src/routes/messages.js` file in which `router` is already declared. 
-It already has several handlers for GET, POST and DELETE requests that we need to implement to support the messages API.
+You can see the `backend/src/routes/messages.js` file, where the `router` has already been declared.
+It includes several handlers for GET, POST, and DELETE requests, which need to be implemented to support the messages API.
 
-Before we return to this file, let's see how easily this router is added to our application in the file `backend/src/index.js`. 
-There you only need to import the router and add it using the familiar `app.use` method:
+Before working on this file, let's examine how this router is added to our application in `backend/src/index.js`.
+There, you only need to import the router and add it using the familiar `app.use` method:
 ```js
 app.use('/api/messages', messageRoutes);
 ```
@@ -14,32 +14,33 @@ This means our `messageRoutes` router will actually handle GET, POST, and DELETE
 
 ### Task
 
-Complete the implementation of message processing routes. Remember to use `await` keyword using `messageService` methods since they are asynchronous. 
+Complete the implementation of the message processing routes. Since `messageService` methods are asynchronous, remember to use the `await` keyword. 
 
 Note that each route has its own try-catch block.  
-This helps isolate error handling, ensuring the proper response status codes and custom error messages for different operations.
+This helps isolate error handling, ensuring appropriate response status codes and custom error messages for different operations.
 
 #### GET
-Get messages from `messageService` and send them as a response using the `res.json()` method.
+Retrieve messages from `messageService` and send them as a response using the `res.json()` method.
 
 #### POST
-[POST](https://en.wikipedia.org/wiki/POST_(HTTP)) request assumes that the server accepts the data enclosed in the body of the request message.
+A [POST](https://en.wikipedia.org/wiki/POST_(HTTP)) request assumes that the server accepts the data enclosed in the body of the request message.
 
-In our case, the request body contains two fields with the message text and username:
+In our case, the request body contains two fields: the message text and the username:
 ```
 req.body.content
 req.body.username
 ```
 
-Add a check for the presence of the `content` parameter in the request body, similar to `username`. Response with message `'Message content is required'` and code `400` in case of error.
+Add a check to ensure the `content` parameter is present in the request body, similar to the `username`. 
+If it's missing, respond with the message `'Message content is required'` and the code `400`.
 
-Then, add the message to `messageService`.
-The `addMessage` method you will use returns an object containing the fields `id`, `username`, and `content`.
-Use this object as the handler's response. Set the response status code to `201`, which means `Created`.
+Next, add the message to `messageService` using
+the `addMessage` method, which will return an object containing the fields `id`, `username`, and `content`.
+Use this object in the handler's response, and set the response status code to `201`, which means `Created`.
 
 ### Check yourself
-For self-testing and debugging, you have tests available in the `backend/__test__/messages.test.js` file, as well as the frontend,
-which allows you to experience how just a few lines of code bring you closer to a working application.
+For self-testing and debugging, use the tests provided in the `backend/__test__/messages.test.js` file and the frontend.
+These tools will help you see how just a few lines of code bring you closer to a fully working application.
 
 <div style="text-align: center; max-width: 900px; margin: 0 auto;">
 <img src="images/messages.gif">
@@ -48,33 +49,33 @@ which allows you to experience how just a few lines of code bring you closer to 
 ---
 
 #### DELETE (optional)
-This task is not checked when clicking the `Check` button and does not affect course completion.
+This task is optional and will not be checked when clicking the `Check` button, so it does not affect course completion.
 
-To delete a message, you will need to:
-- Get its `id` from the route parameters: `req.params.id`.
-- Perform deletion using `messageService`.
-- If the message was not found, return the `404` code with the body `{ message: 'Message not found' }`.
-- In case of successful deletion, set the response code to `204` (`No Content`): `res.status(204).send()`.
+To implement message deletion, you will need to:
+- Retrieve the message `id` from the route parameters: `req.params.id`.
+- Perform the deletion using `messageService`.
+- If the message is not found, return the `404` code with the body `{ message: 'Message not found' }`.
+- If deletion is successful, return the `204` (`No Content`) code with `res.status(204).send()`.
 
-Remember to change test cases declaration from `xit` to `it` to make them works in the `backend/__test__/messages.test.js` file. 
+Remember to update the test cases in the `backend/__test__/messages.test.js` file by replacing `xit` with `it` to activate them. 
 
 <div class="hint" title="Route parameters">
 
-[Earlier](course://GettingStartedExpress/sum_route_implementation) in the course, we used query parameters:
+[Earlier](course://GettingStartedExpress/sum_route_implementation) in the course, we used query parameters like this:
 ```text
 /some_route?id=value
 ```
-And later in the code, we could use this parameter as follows:
+In the code, we used this parameter as follows:
 ```js
 req.query.id
 ```
 
-But there is another way, where the value is part of the URL:
+However, there is also another method where values are part of the URL:
 ```text
 /some_route/value
 ```
-To use this method, you first need to specify a placeholder when declaring the handler (`'/:id'`) in this case.
-This will allow you to access the passed value using the name specified in the placeholder:
+This method requires specifying a placeholder (e.g., `'/:id'`) when declaring the handler.
+This allows you to access the value using the name specified in the placeholder:
 ```js
 req.params.id
 ```  
