@@ -9,31 +9,31 @@ files:
         placeholder_text: // Get the username and password from the req.body
       - offset: 330
         length: 79
-        placeholder_text: // Respond with the code 400 and the error message
+        placeholder_text: // Respond with the 400 code and an error message
       - offset: 538
         length: 49
         placeholder_text: // Create a new user
       - offset: 597
         length: 57
-        placeholder_text: // Respond with the code 201 and username as an answer
+        placeholder_text: // Respond with the 201 code and the username as an answer
       - offset: 993
         length: 40
         placeholder_text: // Get the username and password from the req.body
       - offset: 1085
         length: 78
-        placeholder_text: // Respond with the code 400 and the error message
+        placeholder_text: // Respond with the 400 code and an error message
       - offset: 1203
         length: 30
         placeholder_text: // Get the user from the user service
       - offset: 1268
         length: 73
-        placeholder_text: // Respond with the code 401 and error message
+        placeholder_text: // Respond with the 401 code and an error message
       - offset: 1419
         length: 40
-        placeholder_text: // Compare passwords here with bcrypt.compare
+        placeholder_text: // Compare the passwords with bcrypt.compare
       - offset: 1505
         length: 73
-        placeholder_text: // Respond with the code 401 and error message
+        placeholder_text: // Respond with the 401 code and an error message
       - offset: 1598
         length: 44
         placeholder_text: // Respond with the code 200 and the username
@@ -129,7 +129,7 @@ files:
         is_visible: false
       - offset: 876
         length: 37
-        placeholder_text: // Respond with 201 code and message as a content
+        placeholder_text: // Respond with the 201 code and a message as the content
         dependency:
           lesson: RoutingMiddleware
           task: messages_router
@@ -156,7 +156,7 @@ files:
         is_visible: false
       - offset: 1236
         length: 140
-        placeholder_text: "// Respond with code 204 on success, or code 404 and an error\
+        placeholder_text: "// Respond with the 204 code on success, or 404 with an error\
       \ message otherwise."
         dependency:
           lesson: RoutingMiddleware
