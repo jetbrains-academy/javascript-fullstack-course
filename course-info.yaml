@@ -10,6 +10,7 @@ content:
   - GettingStartedNode
   - GettingStartedExpress
   - TestingDebugging
+  - WebSockets
 additional_files:
   - name: package.json
   - name: package-lock.json
@@ -19,4 +20,34 @@ additional_files:
   - name: jest.config.js
   - name: jsconfig.json
   - name: run/Template Jest.run.xml
+  - name: .git/objects/73/e74903a8c60a9286d91b89a91b48f6cfd6839c
+    is_binary: true
+  - name: .git/objects/8f/33e491cbe9ae392a03d3a2a179882af57a9be2
+    is_binary: true
+  - name: .git/objects/9f/4007470b9cf17b9dc623a51ce3012994930294
+    is_binary: true
+  - name: .git/objects/20/88f10cd1549289e4c908fa050998c7fd05156c
+    is_binary: true
+  - name: .git/objects/68/c5f73868e9810f13e30ec4fbac89404fba3830
+    is_binary: true
+  - name: .git/objects/f3/53e8daa2465b4127c6dbad7b4ee8bff9bbc556
+    is_binary: true
+  - name: .git/logs/refs/heads/konstantin/websockets_lesson
+  - name: .git/objects/9c/6805c8a5daad6ee7efc100fff04dfdcfd44479
+    is_binary: true
+  - name: .git/objects/a7/0dae499bbe893c27859fc97da881fbcb83e4cb
+    is_binary: true
+  - name: .git/objects/b6/f01c5b81320fae01aeb9d865425fbda0a6a2d3
+    is_binary: true
+  - name: .git/objects/ce/de19ed136dbb0aa304f201e2e27afa0583e781
+    is_binary: true
+  - name: .git/objects/e8/58b6bb1dedf9bdb5c8b559889dcd9e4dc18e72
+    is_binary: true
+  - name: .git/objects/f5/0749597facfda7eef37d7cf420b878ec5c1829
+    is_binary: true
+  - name: .git/refs/heads/konstantin/websockets_lesson
+  - name: .git/objects/9e/e7100515d4d05e57835da3015a86522a18e891
+    is_binary: true
+  - name: .git/objects/ea/e81e6c98d30aa802239e21a6a161e1abf92b61
+    is_binary: true
 yaml_version: 2

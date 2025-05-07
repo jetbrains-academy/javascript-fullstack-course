@@ -1,0 +1,11 @@
+type: theory
+custom_name: Lesson overview
+files:
+  - name: task.js
+    visible: true
+  - name: images/websocket_dark.png
+    visible: false
+    is_binary: true
+  - name: images/websocket.png
+    visible: false
+    is_binary: true
