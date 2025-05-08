@@ -8,7 +8,7 @@ In this lesson, you will learn:
 Although JavaScript is typically used for front-end development, 
 Node.js makes it possible to write both client-side and server-side code using the same language.
 
-Node.js is fast, beginner-friendly, and gives developers access to an extensive package ecosystem called ([NPM](https://www.npmjs.com/)).
+Node.js is fast, beginner-friendly, and gives developers access to an extensive package ecosystem called [NPM](https://www.npmjs.com/) (Node Package Manager).
 NPM provides countless reusable components for various tasks, saving time and effort during development.
 
 <div style="text-align: center ">
