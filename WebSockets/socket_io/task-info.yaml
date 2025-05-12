@@ -15,10 +15,10 @@ files:
         placeholder_text: // Delete the message using the message service
       - offset: 807
         length: 137
-        placeholder_text: // Trigger 'error' event if the message was not found
+        placeholder_text: // Trigger an 'error' event if the message was not found
       - offset: 962
         length: 57
-        placeholder_text: // Broadcast 'messageDeleted' event with messageId to all connected
+        placeholder_text: // Broadcast the 'messageDeleted' event with messageId to all connected
           clients
   - name: test/test.js
     visible: false
