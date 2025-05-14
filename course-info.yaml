@@ -11,6 +11,7 @@ content:
   - GettingStartedExpress
   - TestingDebugging
   - DataLayer
+  - Authentication
 additional_files:
   - name: package.json
   - name: package-lock.json
@@ -20,4 +21,5 @@ additional_files:
   - name: jest.config.js
   - name: jsconfig.json
   - name: run/Template Jest.run.xml
+  - name: .env
 yaml_version: 2
