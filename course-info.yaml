@@ -10,6 +10,7 @@ content:
   - GettingStartedNode
   - GettingStartedExpress
   - TestingDebugging
+  - DataLayer
 additional_files:
   - name: package.json
   - name: package-lock.json

@@ -1,0 +1,11 @@
+type: theory
+custom_name: Lesson overview
+files:
+  - name: backend/src/index.js
+    visible: true
+  - name: images/storage_boxes_dark.png
+    visible: false
+    is_binary: true
+  - name: images/storage_boxes.png
+    visible: false
+    is_binary: true

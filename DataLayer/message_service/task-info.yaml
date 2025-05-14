@@ -1,0 +1,68 @@
+type: edu
+custom_name: Message service
+files:
+  - name: images/storage_boxes_dark.png
+    visible: false
+    is_binary: true
+  - name: images/storage_boxes.png
+    visible: false
+    is_binary: true
+  - name: images/save_fetch_message.png
+    visible: false
+    is_binary: true
+  - name: images/save_fetch_message_dark.png
+    visible: false
+    is_binary: true
+  - name: backend/src/data/dataServices.js
+    visible: true
+    placeholders:
+      - offset: 590
+        length: 25
+        placeholder_text: undefined
+        dependency:
+          lesson: DataLayer
+          task: create_user
+          file: backend/src/data/dataServices.js
+          placeholder: 1
+        is_visible: false
+      - offset: 733
+        length: 89
+        placeholder_text: /* create the message */
+      - offset: 833
+        length: 29
+        placeholder_text: // add it to the storage
+      - offset: 941
+        length: 14
+        placeholder_text: "[]"
+      - offset: 1036
+        length: 176
+        placeholder_text: // delete the message with messageId from the storage
+  - name: frontend/src/App.css
+    visible: true
+  - name: frontend/src/App.jsx
+    visible: true
+  - name: frontend/src/main.jsx
+    visible: true
+  - name: frontend/src/index.css
+    visible: true
+  - name: frontend/src/components/Tile.jsx
+    visible: true
+  - name: frontend/public/academy.svg
+    visible: true
+  - name: frontend/index.html
+    visible: true
+  - name: frontend/package.json
+    visible: true
+  - name: frontend/vite.config.js
+    visible: true
+  - name: backend/package.json
+    visible: true
+  - name: package.json
+    visible: true
+  - name: backend/src/index.js
+    visible: true
+  - name: backend/__tests__/dataServices.test.js
+    visible: true
+  - name: test/test.js
+    visible: false
+    propagatable: false
