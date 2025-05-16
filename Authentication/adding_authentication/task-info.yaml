@@ -9,7 +9,7 @@ files:
         placeholder_text: // Retrieve the JWT_SECRET environment variable
       - offset: 194
         length: 69
-        placeholder_text: // Log message to make it easier to figure out what went wrong
+        placeholder_text: // Log message to help identify what went wrong
       - offset: 268
         length: 16
         placeholder_text: // Terminate the app with `1` exit code

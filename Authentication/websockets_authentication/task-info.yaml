@@ -15,7 +15,7 @@ files:
         is_visible: false
       - offset: 194
         length: 69
-        placeholder_text: // Log message to make it easier to figure out what went wrong
+        placeholder_text: // Log message to help identify what went wrong
         dependency:
           lesson: Authentication
           task: username_from_token
