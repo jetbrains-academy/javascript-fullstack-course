@@ -20,7 +20,8 @@ test('Test POST /api/messages with valid data', async () => {
     try {
         const response = await request(httpServer)
             .post('/api/messages')
-            .send({ username: 'User', content: 'Hello, World!' });
+            .send({ username: 'User', content: 'Hello, World!' })
+            .timeout(4000);
 
         expect(response.status).toBe(201);
         expect(response.body).toMatchObject({
@@ -39,7 +40,8 @@ test('Test POST /api/messages without content', async () => {
     try {
         const response = await request(httpServer)
             .post('/api/messages')
-            .send({ username: 'User' });
+            .send({ username: 'User' })
+            .timeout(4000);
 
         expect(response.status).toBe(400);
         expect(response.body).toHaveProperty('message', 'Message content is required');
@@ -52,7 +54,8 @@ test('Test POST /api/messages without content', async () => {
 
 test('Test GET /api/messages initially empty', async () => {
     try {
-        const response = await request(httpServer).get('/api/messages');
+        const response = await request(httpServer).get('/api/messages')
+            .timeout(4000);
 
         expect(response.status).toBe(200);
         expect(response.body).toEqual([]);
@@ -68,10 +71,12 @@ test('Test GET /api/messages with data', async () => {
         for (let i = 0; i < 3; i++) {
             await request(httpServer)
                 .post('/api/messages')
-                .send({ username: 'Testuser', content: `Test message ${i}` });
+                .send({ username: 'Testuser', content: `Test message ${i}` })
+                .timeout(4000);
         }
 
-        const response = await request(httpServer).get('/api/messages');
+        const response = await request(httpServer).get('/api/messages')
+            .timeout(4000);
 
         expect(response.status).toBe(200);
         expect(response.body).toHaveLength(3);
