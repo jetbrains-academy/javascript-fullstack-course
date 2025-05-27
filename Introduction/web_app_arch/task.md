@@ -9,7 +9,7 @@ For our chat app:
 - The frontend will display messages and provide an interface for sending new messages.
 - The backend will handle user authentication and enable real-time message communication. 
 
-## TODO: PICTURE!
+### Backend ↔ frontend communication
 
 These two parts communicate through a **[RESTful](https://en.wikipedia.org/wiki/REST) API**, which facilitates the exchange of data between the server and the client.
 
@@ -44,7 +44,8 @@ To simplify development and for convenient testing, an educational frontend will
 
 By the second half of the course, you’ll have a clear understanding of how the backend works, and then you'll be ready to dive into frontend development.
 
-# TODO: update this file before release
+> **The second part will be added to this course soon. Stay tuned for updates!**
+
 
 <style>
 img {
