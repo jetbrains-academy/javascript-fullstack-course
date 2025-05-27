@@ -1,9 +1,11 @@
 type: marketplace
-title: ERN-stack course
+title: TODO!
 language: English
 summary: |-
-  <p>TODO (1)</p>
-  <p>TODO (2)</p>
+  <p>Have you always wanted to create web applications but weren’t sure where to begin? Start your full-stack development journey with this beginner-friendly course by JetBrains Academy. Learn to build web applications step by step, mastering <a href="https://nodejs.org/">Node.js</a>, <a href="https://expressjs.com/">Express.js</a> and <a href="https://react.dev/">React</a>.</p>
+  <p>Step by step, you’ll create your own <b>Real-Time Chat Application</b> with user authentication and live updates. Each lesson will help you build and understand an essential part of this larger project. By the end of the course, you'll have a strong foundation in full-stack development and a portfolio-ready project.</p>
+  <p>The course is divided into two parts: backend and frontend (frontend coming soon). During the backend part, you’ll use a demo frontend to experiment with your developments. We took care of everything — this is the perfect place to start!</p>
+
 programming_language: JavaScript
 content:
   - Introduction
