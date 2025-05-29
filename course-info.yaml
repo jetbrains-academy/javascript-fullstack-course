@@ -12,6 +12,7 @@ content:
   - TestingDebugging
   - DataLayer
   - RoutingMiddleware
+  - WebSockets
 additional_files:
   - name: package.json
   - name: package-lock.json
