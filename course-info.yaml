@@ -11,6 +11,7 @@ content:
   - GettingStartedExpress
   - TestingDebugging
   - DataLayer
+  - RoutingMiddleware
 additional_files:
   - name: package.json
   - name: package-lock.json

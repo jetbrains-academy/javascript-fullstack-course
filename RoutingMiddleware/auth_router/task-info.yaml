@@ -1,0 +1,189 @@
+type: edu
+custom_name: Authentication router
+files:
+  - name: backend/src/routes/auth.js
+    visible: true
+    placeholders:
+      - offset: 238
+        length: 40
+        placeholder_text: // Get the username and password from the req.body
+      - offset: 330
+        length: 79
+        placeholder_text: // Respond with the 400 code and an error message
+      - offset: 538
+        length: 49
+        placeholder_text: // Create a new user
+      - offset: 597
+        length: 57
+        placeholder_text: // Respond with the 201 code and the username as an answer
+      - offset: 993
+        length: 40
+        placeholder_text: // Get the username and password from the req.body
+      - offset: 1085
+        length: 78
+        placeholder_text: // Respond with the 400 code and an error message
+      - offset: 1203
+        length: 30
+        placeholder_text: // Get the user from the user service
+      - offset: 1268
+        length: 73
+        placeholder_text: // Respond with the 401 code and an error message
+      - offset: 1419
+        length: 40
+        placeholder_text: // Compare the passwords with bcrypt.compare
+      - offset: 1505
+        length: 73
+        placeholder_text: // Respond with the 401 code and an error message
+      - offset: 1598
+        length: 44
+        placeholder_text: // Respond with the code 200 and the username
+  - name: images/routers.png
+    visible: false
+    is_binary: true
+  - name: images/routers_dark.png
+    visible: false
+    is_binary: true
+  - name: backend/src/data/dataServices.js
+    visible: true
+  - name: backend/__tests__/dataServices.test.js
+    visible: true
+  - name: backend/package.json
+    visible: true
+  - name: frontend/src/App.css
+    visible: true
+  - name: frontend/src/App.jsx
+    visible: true
+  - name: frontend/src/main.jsx
+    visible: true
+  - name: frontend/src/index.css
+    visible: true
+  - name: frontend/src/components/Tile.jsx
+    visible: true
+  - name: frontend/public/academy.svg
+    visible: true
+  - name: frontend/index.html
+    visible: true
+  - name: frontend/package.json
+    visible: true
+  - name: frontend/vite.config.js
+    visible: true
+  - name: package.json
+    visible: true
+  - name: backend/src/index.js
+    visible: true
+    placeholders:
+      - offset: 160
+        length: 42
+        placeholder_text: // Import auth router
+        is_visible: false
+      - offset: 422
+        length: 33
+        placeholder_text: // Add auth router for the route /api/auth here
+  - name: backend/src/routes/messages.js
+    visible: true
+    placeholders:
+      - offset: 200
+        length: 52
+        placeholder_text: // Get messages from the message service
+        dependency:
+          lesson: RoutingMiddleware
+          task: messages_router
+          file: backend/src/routes/messages.js
+          placeholder: 1
+        is_visible: false
+      - offset: 261
+        length: 26
+        placeholder_text: // Send them as a JSON-response
+        dependency:
+          lesson: RoutingMiddleware
+          task: messages_router
+          file: backend/src/routes/messages.js
+          placeholder: 2
+        is_visible: false
+      - offset: 523
+        length: 33
+        placeholder_text: // Get the content field from the request body
+        dependency:
+          lesson: RoutingMiddleware
+          task: messages_router
+          file: backend/src/routes/messages.js
+          placeholder: 3
+        is_visible: false
+      - offset: 680
+        length: 110
+        placeholder_text: // Check the content parameter
+        dependency:
+          lesson: RoutingMiddleware
+          task: messages_router
+          file: backend/src/routes/messages.js
+          placeholder: 4
+        is_visible: false
+      - offset: 800
+        length: 67
+        placeholder_text: // Add a message to the message service
+        dependency:
+          lesson: RoutingMiddleware
+          task: messages_router
+          file: backend/src/routes/messages.js
+          placeholder: 5
+        is_visible: false
+      - offset: 876
+        length: 37
+        placeholder_text: // Respond with the 201 code and a message as the content
+        dependency:
+          lesson: RoutingMiddleware
+          task: messages_router
+          file: backend/src/routes/messages.js
+          placeholder: 6
+        is_visible: false
+      - offset: 1123
+        length: 32
+        placeholder_text: // Get the message id
+        dependency:
+          lesson: RoutingMiddleware
+          task: messages_router
+          file: backend/src/routes/messages.js
+          placeholder: 7
+        is_visible: false
+      - offset: 1164
+        length: 62
+        placeholder_text: // Delete the message using message service
+        dependency:
+          lesson: RoutingMiddleware
+          task: messages_router
+          file: backend/src/routes/messages.js
+          placeholder: 8
+        is_visible: false
+      - offset: 1236
+        length: 140
+        placeholder_text: "// Respond with the 204 code on success, or 404 with an error\
+      \ message otherwise."
+        dependency:
+          lesson: RoutingMiddleware
+          task: messages_router
+          file: backend/src/routes/messages.js
+          placeholder: 9
+        is_visible: false
+  - name: frontend/src/components/GetMessages.jsx
+    visible: true
+  - name: frontend/src/components/PostMessage.jsx
+    visible: true
+  - name: frontend/src/components/DeleteMessage.jsx
+    visible: true
+  - name: images/messages.gif
+    visible: false
+    is_binary: true
+  - name: backend/__tests__/messages.test.js
+    visible: true
+  - name: test/test.js
+    visible: false
+    propagatable: false
+  - name: frontend/src/components/Register.jsx
+    visible: true
+  - name: frontend/src/components/Login.jsx
+    visible: true
+  - name: backend/__tests__/auth.test.js
+    visible: true
+  - name: images/auth.gif
+    visible: false
+    is_binary: true
