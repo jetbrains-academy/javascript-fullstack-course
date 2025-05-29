@@ -1,0 +1,9 @@
+type: theory
+custom_name: Lesson overview
+files:
+  - name: images/jwt_logo_dark.svg
+    visible: false
+  - name: images/jwt_logo.svg
+    visible: false
+  - name: backend/src/index.js
+    visible: true
