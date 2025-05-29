@@ -1,0 +1,89 @@
+type: edu
+custom_name: Socket.IO
+files:
+  - name: backend/src/socket.js
+    visible: true
+    placeholders:
+      - offset: 343
+        length: 77
+        placeholder_text: // Add a new message to the message service
+      - offset: 438
+        length: 28
+        placeholder_text: // Broadcast the message to all connected clients
+      - offset: 722
+        length: 67
+        placeholder_text: // Delete the message using the message service
+      - offset: 807
+        length: 137
+        placeholder_text: // Trigger an 'error' event if the message was not found
+      - offset: 962
+        length: 57
+        placeholder_text: // Broadcast the 'messageDeleted' event with messageId to all
+          connected clients
+  - name: test/test.js
+    visible: false
+    propagatable: false
+  - name: backend/src/data/dataServices.js
+    visible: true
+  - name: backend/src/routes/auth.js
+    visible: true
+  - name: backend/src/routes/messages.js
+    visible: true
+  - name: backend/src/index.js
+    visible: true
+    placeholders:
+      - offset: 368
+        length: 36
+        placeholder_text: // Create a SocketIO object
+      - offset: 405
+        length: 23
+        placeholder_text: // Call the socket initialization function
+  - name: backend/__tests__/auth.test.js
+    visible: true
+  - name: backend/__tests__/messages.test.js
+    visible: true
+  - name: backend/__tests__/dataServices.test.js
+    visible: true
+  - name: backend/package.json
+    visible: true
+  - name: frontend/src/App.css
+    visible: true
+  - name: frontend/src/App.jsx
+    visible: true
+  - name: frontend/src/main.jsx
+    visible: true
+  - name: frontend/src/index.css
+    visible: true
+  - name: frontend/src/components/Tile.jsx
+    visible: true
+  - name: frontend/src/components/Login.jsx
+    visible: true
+  - name: frontend/src/components/Register.jsx
+    visible: true
+  - name: frontend/src/components/GetMessages.jsx
+    visible: true
+  - name: frontend/src/components/PostMessage.jsx
+    visible: true
+  - name: frontend/src/components/DeleteMessage.jsx
+    visible: true
+  - name: frontend/public/academy.svg
+    visible: true
+  - name: frontend/index.html
+    visible: true
+  - name: frontend/package.json
+    visible: true
+  - name: frontend/vite.config.js
+    visible: true
+  - name: package.json
+    visible: true
+  - name: frontend/src/components/WebSocketSender.jsx
+    visible: true
+  - name: frontend/src/components/WebSocketMessages.jsx
+    visible: true
+  - name: frontend/src/components/WebSocketDelete.jsx
+    visible: true
+  - name: backend/__tests__/socket.test.js
+    visible: true
+  - name: images/sockets.gif
+    visible: false
+    is_binary: true

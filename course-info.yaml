@@ -7,14 +7,7 @@ summary: |-
 programming_language: JavaScript
 content:
   - Introduction
-  - GettingStartedNode
-  - GettingStartedExpress
-  - TestingDebugging
-  - DataLayer
-  - RoutingMiddleware
-  - WebSockets
-  - Authentication
-  - Database
+  - Backend
 additional_files:
   - name: package.json
   - name: package-lock.json
