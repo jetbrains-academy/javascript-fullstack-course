@@ -8,6 +8,7 @@ programming_language: JavaScript
 content:
   - Introduction
   - Backend
+  - Feedback
 additional_files:
   - name: package.json
   - name: package-lock.json
