@@ -1,14 +1,14 @@
-To add support for SQLite database using Sequelize, we only need to make changes in one file: `backend/src/data/dataServices.js`.
+To add support for an SQLite database using Sequelize, we only need to modify a single file: `backend/src/data/dataServices.js`.
 
 ---
 
 ### Sequelize initialization
 First, let's take a brief look at the Sequelize initialization in the `backend/src/data/dbConfig.js` file.
-This file contains a small trick: if the project is run in test mode, 
-the database will not be saved to disk, and thus the real database will not be used in the tests.
+This file includes an important feature: if the project is running in test mode, 
+the database is not saved to disk. This ensures the real database is not used during tests.
 
 If you're interested in learning a bit more about the implementation, check out the `backend/jest.setup.js` and `backend/package.json` files.
-Now let's focus on a non-test scenario.
+For now, let's focus on the non-test scenario.
 ```js
   const sequelize = new Sequelize({
     dialect: 'sqlite',
@@ -16,28 +16,28 @@ Now let's focus on a non-test scenario.
     logging: false
 });
 ```
-Since SQLite is a file-based database, we need the path to the database file.
-For our example, it will be the current directory, i.e., the `backend` directory in our project.
-If you want to see all database operations in logs, you can omit the `logging: false` line.
+Since SQLite is a file-based database, we need to define the path to the database file.
+In our case, this will be the current working directory (`backend`).
+If you'd like to log all database operations, you can remove the `logging: false` option.
 
 ---
 
 ### Creating tables
-Now go next to the `backend/src/data/dataServices.js` file.
-Here we need to describe how the tables look in the database.
-This is necessary both to initialize the tables if the database is empty (on the first run of the application)
+Now, go next to the `backend/src/data/dataServices.js` file.
+Here, you will describe the structure of the database tables.
+This is required for two purposes: to initialize the tables if the database is empty (e.g., during the first run of the application),
 and to map the database records to JavaScript objects.
 
-The `Users` table can be imagined like this:
+The `Users` table will be defined as follows:
 
 | username | password     |
 |----------|--------------|
 | TestUser | testpassword |
 | Tom      | 12345678     |
 
-Here, `username` and `password` are both of string types (`DataTypes.STRING`) and cannot be empty (`allowNull: false`).
-The `username` is a unique field, values cannot be repeated,
-and it can be used for an unambiguous search (`primaryKey: true`).
+Here, `username` and `password` are both of type string (`DataTypes.STRING`) and cannot be empty (`allowNull: false`).
+The `username` field is unique
+and can be used for unambiguous searches (`primaryKey: true`).
 
 The `Messages` table can look like this:
 
@@ -46,33 +46,33 @@ The `Messages` table can look like this:
 | 1  | Tom      | Hello!       |
 | 2  | TestUser | Test message |
 
-The database can completely handle the task of generating unique IDs.
+The database can automatically generates unique IDs for message records.
 
 ---
 
 ### Task
 #### Messages table
 Complete the `Messages` table initialization with the following fields using the `Users` table as an example:
-- `username`: must be of type `DataTypes.STRING` and cannot be `Null`.
-- `content`: must be of type `DataTypes.TEXT` and cannot be `Null`.
+- `username`: must be of type `DataTypes.STRING` and cannot be `null`.
+- `content`: must be of type `DataTypes.TEXT` and cannot be `null`.
 
 #### User service
-Next, let's update the user service to use a database instead of in-memory storage.
+Next, let's update the user service to interact with the database instead of using in-memory storage.
 
 In the `createUser` method:
-1. Use the `Users.findByPk` method to find the user by a primary key. Provide the `username` as an argument.
-2. Create the user using the `Users.create` method. Provide an argument as a JS object with necessary properties:
+1. Use the `Users.findByPk` method to find a user by their primary key. Provide the `username` as an argument.
+2. Create a user using the `Users.create` method. Pass a JS object with the necessary properties:
    `{ username: <username_value>, password: <password_value> }`
 
 In the `getUser` method:
-1. Find the user by a primary key.
-2. If the user is found (`findByPk` did not return `null`), return the user object as a plain JS object. Use the `.get({ plain: true })` method for this.
-3. If the user is not found, return `undefined` to keep the method interface the same.
+1. Find a user by their primary key.
+2. If a user is found (`findByPk` did not return `null`), return it as a plain JS object using the `.get({ plain: true })` method.
+3. If no user is found, return `undefined` to keep the method interface the same.
 
 #### Message service
 In the `addMessage` method:
 1. Add a new message using the `Messages.create` method. Provide the following object as an argument:
-   `{ username: <username_value>, content: <content_value> }`. Note that we no longer need to generate IDs ourselves; the database will handle it.
+   `{ username: <username_value>, content: <content_value> }`. Note that we no longer need to generate an ID for each message, as the database will handle it.
 2. The `Messages.create` method returns the newly added database record. `addMessage` should return it as a plain object (use the `.get({ plain: true })` method).
 
 In the `getMessages` method:
@@ -81,18 +81,18 @@ In the `getMessages` method:
 
 #### deleteMessage (optional)
 _This task is optional._  
-Completing it doesn’t affect course progress or completion, and it isn’t checked when you click the `Check` button.
+Completing it will not affect course progress or completion, and it isn’t checked when you click the `Check` button.
 
-Using the [destroy](https://sequelize.org/docs/v7/querying/delete/) method, delete the message with the provided `messageId`.
+Using the [destroy](https://sequelize.org/docs/v7/querying/delete/) method, delete a message with the provided `messageId`.
 Return `true` if the message was found and deleted.
 
 ---
 
 ### Check yourself
-That's it! No other changes to the project are required, except for the tests. 
-We have updated the tests in `backend/__tests__` directory for you.
-You can use them to verify functionality and enjoy a fully working backend by using the frontend.
-Now, even restarting the application won't cause the user or message information to be lost.
+That's it! No further changes to the project are required, except for the tests. 
+We have already updated the tests in the `backend/__tests__` directory for you.
+You can use them to verify your functionality and enjoy a fully working backend by using the frontend.
+Now, even restarting the application will no longer result in the loss of user or message data.
 
 <div style="text-align: center; max-width: 900px; margin: 0 auto;">
 <img src="images/breathtaking.gif" alt="Sockets with auth">
