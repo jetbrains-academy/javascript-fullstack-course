@@ -1,4 +1,4 @@
-# JavaScript Fullstack Course
+# Full Stack JavaScript from Scratch
 [![official JetBrains project](http://jb.gg/badges/official.svg)](https://confluence.jetbrains.com/display/ALL/JetBrains+on+GitHub) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 Have you always wanted to create web applications but weren’t sure where to begin? Start your full-stack development journey with this beginner-friendly course by JetBrains Academy. Step by step, you'll learn to build web applications, mastering <a href="https://nodejs.org/">Node.js</a>, <a href="https://expressjs.com/">Express.js</a> and <a href="https://react.dev/">React</a>.
