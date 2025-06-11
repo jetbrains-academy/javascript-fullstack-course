@@ -1,61 +1,84 @@
-// In-memory storage for users and messages
-const store = {
-  users: new Map(),
-  messages: [],
-};
+import { DataTypes } from 'sequelize';
+import sequelize from './dbConfig.js';
 
-// User methods
+const { Users, Messages } = await (async () => {
+
+    // Define a Users table model
+    const Users = sequelize.define('Users', {
+        username: {
+            type: DataTypes.STRING,
+            primaryKey: true,
+            allowNull: false
+        },
+        password: {
+            type: DataTypes.STRING,
+            allowNull: false
+        }
+    });
+
+    // Define a Messages table model
+    const Messages = sequelize.define('Messages', {
+        id: {
+            type: DataTypes.BIGINT,
+            primaryKey: true,
+            autoIncrement: true
+        },
+        username: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        content: {
+            type: DataTypes.TEXT,
+            allowNull: false
+        }
+    });
+
+    await sequelize.sync();
+    return { Users, Messages };
+})();
+
 export const userService = {
-  createUser: async (username, hashedPassword) => {
-    console.log('Data layer: Creating user:', { username });
+    createUser: async (username, hashedPassword) => {
 
-    if (store.users.has(username)) {
-      console.log('Data layer: Username already exists');
-      throw new Error('Username already exists');
-    }
+        if (await Users.findByPk(username)) {
+            throw new Error('Username already exists');
+        }
+        await Users.create({ username, password: hashedPassword });
+        return {username};
+    },
 
-    store.users.set(username, { username, password: hashedPassword });
-    console.log('Data layer: User created successfully');
-    console.log('Data layer: Current users:', Array.from(store.users.keys()));
-
-    return { username };
-  },
-
-  getUser: async (username) => {
-    console.log('Data layer: Getting user:', { username });
-    const user = store.users.get(username);
-    console.log('Data layer: User found:', !!user);
-    return user;
-  },
+    getUser: async (username) => {
+        const user = await Users.findByPk(username);
+        return user ? user.get({ plain: true }) : undefined;
+    },
 
 };
 
-// Message methods
 export const messageService = {
-  addMessage: async (username, content) => {
-    const message = {
-      id: Date.now(),
-      username,
-      content,
-      timestamp: new Date().toISOString()
-    };
-    store.messages.push(message);
-    return message;
-  },
+    addMessage: async (username, content) => {
+        const message = await Messages.create({
+            username,
+            content
+        });
+        return message.get({ plain: true });
+    },
 
-  getMessages: async (limit = 50) => {
-    return store.messages.slice(-limit);
-  },
+    getMessages: async () => {
+        return await Messages.findAll({raw: true});
+    },
 
-  // TODO: Give it to students as optional!
-  deleteMessage: async (messageId) => {
-    const index = store.messages.findIndex(msg => msg.id === messageId);
-    if (index !== -1) {
-      store.messages.splice(index, 1);
-      return true;
+    // Optional task
+    deleteMessage: async (messageId) => {
+        const deleted = await Messages.destroy({
+            where: { id: messageId }
+        });
+        return deleted > 0;
     }
-    return false;
-  }
 };
 
-export default store;
+// It is used only for testing purposes:
+export const dbReset = async () => {
+    // Delete all records in Messages and Users tables
+    await Messages.destroy({ where: {}, truncate: true });
+    await Users.destroy({ where: {}, truncate: true });
+};

@@ -3,54 +3,60 @@ import jwt from 'jsonwebtoken';
 import { userService } from '../data/dataServices.js';
 
 dotenv.config();
-export const JWT_SECRET = process.env.JWT_SECRET;
-// console.log('[DEBUG_LOG] JWT_SECRET in auth middleware:', JWT_SECRET);
+const { JWT_SECRET } = process.env;
+
+if (!JWT_SECRET) {
+    console.error('JWT_SECRET is not defined in environment variables.');
+    process.exit(1);
+}
 
 export const generateToken = (username) => {
-  return jwt.sign({ username }, JWT_SECRET, { expiresIn: '24h' });
+    return jwt.sign({ username }, JWT_SECRET);
 };
 
-export const authenticateToken = async (req, res, next) => {
-  const authHeader = req.headers['authorization'];
-  const token = authHeader && authHeader.split(' ')[1];
+export const authenticateRoute = async (req, res, next) => {
+    const authHeader = req.headers['authorization'];
 
-  if (!token) {
-    return res.status(401).json({ message: 'Authentication token required' });
-  }
+    // Typically, the `authorization` header has the format `"Bearer <token>"`
+    const token = authHeader && authHeader.split(' ')[1];
 
-  try {
-    const decoded = jwt.verify(token, JWT_SECRET);
-    const user = await userService.getUser(decoded.username);
-
-    if (!user) {
-      return res.status(401).json({ message: 'User not found' });
+    if (!token) {
+        return res.status(401).json({ message: 'Authentication token required' });
     }
 
-    req.user = decoded;
-    next();
-  } catch (err) {
-    return res.status(401).json({ message: 'Invalid token' });
-  }
+    try {
+        const decoded = jwt.verify(token, JWT_SECRET);
+        const user = await userService.getUser(decoded.username);
+
+        if (!user) {
+            return res.status(401).json({ message: 'User not found' });
+        }
+
+        req.username = decoded.username;
+        next();
+    } catch (err) {
+        return res.status(401).json({ message: 'Invalid token' });
+    }
 };
 
 export const authenticateSocket = async (socket, next) => {
-  const token = socket.handshake.auth.token;
+    const token = socket.handshake.auth.token;
 
-  if (!token) {
-    return next(new Error('Authentication token required'));
-  }
-
-  try {
-    const decoded = jwt.verify(token, JWT_SECRET);
-    const user = await userService.getUser(decoded.username);
-
-    if (!user) {
-      return next(new Error('User not found'));
+    if (!token) {
+        return next(new Error('Authentication token required'));
     }
 
-    socket.user = decoded;
-    next();
-  } catch (err) {
-    next(new Error('Invalid token'));
-  }
+    try {
+        const decoded = jwt.verify(token, JWT_SECRET);
+        const user = await userService.getUser(decoded.username);
+
+        if (!user) {
+            return next(new Error('User not found'));
+        }
+
+        socket.username = decoded.username;
+        next();
+    } catch (err) {
+        next(new Error('Invalid token'));
+    }
 };

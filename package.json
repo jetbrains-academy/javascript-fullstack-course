@@ -3,10 +3,8 @@
   "version": "1.0.0",
   "description": "Real-time chat application with React frontend and Express backend",
   "scripts": {
-    "install:all": "npm install && cd frontend && npm install && cd ../backend && npm install && cd ../edu-frontend && npm install",
-    "dev": "concurrently \"cd backend && npm run dev\" \"cd frontend && npm run dev\"",
-    "dev:edu": "concurrently \"cd backend && npm run dev\" \"cd edu-frontend && npm run dev\"",
-    "test": "cd backend && npm test"
+    "install:all": "npm install && cd frontend && npm install && cd ../backend && npm install",
+    "dev": "concurrently \"cd backend && npm start\" \"cd frontend && npm run dev\""
   },
   "devDependencies": {
     "concurrently": "^8.2.0"
