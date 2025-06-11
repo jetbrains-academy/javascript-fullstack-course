@@ -113,19 +113,10 @@ function Chat({ onLogout }) {
 
   return (
     <div className="chat-container">
-      <div className="chat-header" style={{ display: 'flex', justifyContent: 'flex-end' }}>
+      <div className="chat-header">
         <button 
           onClick={handleLogout} 
           className="logout-button"
-          style={{ 
-            padding: '8px 16px', 
-            backgroundColor: '#c3362b',
-            color: 'white', 
-            border: 'none', 
-            borderRadius: '4px', 
-            cursor: 'pointer',
-            marginBottom: '10px'
-          }}
         >
           Logout
         </button>
@@ -140,12 +131,6 @@ function Chat({ onLogout }) {
               alt="Delete" 
               onClick={() => handleDelete(message.id)} 
               className="delete-button"
-              style={{ 
-                marginLeft: '10px', 
-                cursor: 'pointer', 
-                width: '16px', 
-                height: '16px' 
-              }}
             />
           </div>
         ))}

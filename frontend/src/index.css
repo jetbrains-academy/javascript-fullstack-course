@@ -40,7 +40,7 @@ button {
 }
 
 button:hover {
-  background-color: var(--primary-hover);
+  filter: brightness(0.85);
 }
 
 button:disabled {
@@ -186,6 +186,16 @@ input:focus:valid {
   padding: 1rem;
 }
 
+.chat-header {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.logout-button {
+  background-color: #c3362b;
+  margin-bottom: 10px;
+}
+
 .messages-container {
   flex: 1;
   overflow-y: auto;
@@ -203,6 +213,13 @@ input:focus:valid {
 
 .message:hover {
   background-color: rgba(255, 255, 255, 0.05);
+}
+
+.delete-button {
+  margin-left: 10px;
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
 }
 
 .message-form {
