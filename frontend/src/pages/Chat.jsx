@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import io from 'socket.io-client';
+import deleteIcon from '../assets/delete.svg';
 
 function Chat() {
   const [messages, setMessages] = useState([]);
@@ -37,6 +38,17 @@ function Chat() {
       setMessages(prev => [...prev, message]);
     });
 
+    // Listen for message deletion events
+    newSocket.on('messageDeleted', (data) => {
+      setMessages(prev => prev.filter(message => message.id !== data.messageId));
+    });
+
+    // Listen for error events
+    newSocket.on('error', (error) => {
+      console.error('Socket error:', error);
+      // You could add a toast notification here
+    });
+
     setSocket(newSocket);
     fetchMessages();
 
@@ -52,12 +64,12 @@ function Chat() {
     if (!newMessage.trim()) return;
 
     try {
-      const token = localStorage.getItem('token');
-      await axios.post('/api/messages', 
-        { content: newMessage },
-        { headers: { Authorization: `Bearer ${token}` } }
-      );
-      
+      // const token = localStorage.getItem('token');
+      // await axios.post('/api/messages',
+      //   { content: newMessage },
+      //   { headers: { Authorization: `Bearer ${token}` } }
+      // );
+
       socket?.emit('message', { content: newMessage });
       setNewMessage('');
     } catch (error) {
@@ -65,13 +77,43 @@ function Chat() {
     }
   };
 
+  const handleDelete = async (messageId) => {
+    try {
+      // Use REST API to delete the message
+      const token = localStorage.getItem('token');
+      await axios.delete(`/api/messages/${messageId}`, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+
+      // After successful deletion via REST API, emit socket event to notify other clients
+      socket?.emit('deleteMessage', { messageId });
+
+      // Update local state immediately for better UX
+      setMessages(prev => prev.filter(message => message.id !== messageId));
+    } catch (error) {
+      console.error('Failed to delete message:', error);
+    }
+  };
+
   return (
     <div className="chat-container">
       <div className="messages-container">
-        {messages.map((message, index) => (
-          <div key={index} className="message">
+        {messages.map((message) => (
+          <div key={message.id} className="message">
             <strong>{message.username}: </strong>
             <span>{message.content}</span>
+            <img 
+              src={deleteIcon} 
+              alt="Delete" 
+              onClick={() => handleDelete(message.id)} 
+              className="delete-button"
+              style={{ 
+                marginLeft: '10px', 
+                cursor: 'pointer', 
+                width: '16px', 
+                height: '16px' 
+              }}
+            />
           </div>
         ))}
         <div ref={messagesEndRef} />
