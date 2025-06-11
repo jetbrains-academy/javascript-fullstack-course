@@ -1,12 +1,20 @@
 import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Chat from './pages/Chat';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  useEffect(() => {
+    // Check if user is already authenticated
+    const token = localStorage.getItem('token');
+    if (token) {
+      setIsAuthenticated(true);
+    }
+  }, []);
 
   return (
     <div className="app">
@@ -35,7 +43,7 @@ function App() {
           path="/chat" 
           element={
             isAuthenticated ? (
-              <Chat />
+              <Chat onLogout={() => setIsAuthenticated(false)} />
             ) : (
               <Navigate to="/login" replace />
             )

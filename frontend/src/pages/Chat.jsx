@@ -2,8 +2,10 @@ import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import io from 'socket.io-client';
 import deleteIcon from '../assets/delete.svg';
+import { useNavigate } from 'react-router-dom';
 
-function Chat() {
+function Chat({ onLogout }) {
+  const navigate = useNavigate();
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState('');
   const [socket, setSocket] = useState(null);
@@ -95,8 +97,39 @@ function Chat() {
     }
   };
 
+  const handleLogout = () => {
+    // Close the socket connection
+    socket?.close();
+
+    // Remove the token from localStorage
+    localStorage.removeItem('token');
+
+    // Call the onLogout prop to update the authentication state in App.jsx
+    onLogout();
+
+    // Navigate to the login page
+    navigate('/login');
+  };
+
   return (
     <div className="chat-container">
+      <div className="chat-header" style={{ display: 'flex', justifyContent: 'flex-end' }}>
+        <button 
+          onClick={handleLogout} 
+          className="logout-button"
+          style={{ 
+            padding: '8px 16px', 
+            backgroundColor: '#c3362b',
+            color: 'white', 
+            border: 'none', 
+            borderRadius: '4px', 
+            cursor: 'pointer',
+            marginBottom: '10px'
+          }}
+        >
+          Logout
+        </button>
+      </div>
       <div className="messages-container">
         {messages.map((message) => (
           <div key={message.id} className="message">
