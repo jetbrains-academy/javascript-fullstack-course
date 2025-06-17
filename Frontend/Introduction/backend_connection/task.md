@@ -1,0 +1,34 @@
+If you haven't completed the first part of the course, you can review it by reading only the theory or by referring to the brief API summary below.
+
+For more detailed information, you can check the file [api.md](course://Frontend/Introduction/backend_connection/api.md). 
+But don't worry — you don't need to fully understand everything right now.
+
+### REST API Endpoints
+
+#### Authentication
+- `POST /api/auth/register`: Creates a new user account. Requires username and password in the request body. Returns JWT token and username.
+- `POST /api/auth/login`: Authenticates existing user. Requires username and password in the request body. Returns JWT token and username.
+
+#### Messages
+- `GET /api/messages`: Retrieves all messages. Authentication required.
+- `POST /api/messages`: Creates a new message. Authentication required. Requires content in the request body.
+- `DELETE /api/messages/:id`: Deletes a message by ID. Authentication required.
+
+
+### Socket.IO Events
+
+#### Client to Server
+- `message`: Sends a new message. Requires content in data object.
+- `deleteMessage`: Deletes a message. Requires messageId in data object.
+
+#### Server to Client
+- `message`: Broadcasts a new message to all connected clients.
+- `messageDeleted`: Notifies all clients when a message is deleted.
+- `error`: Sends error messages to clients.
+
+### Authentication
+- JWT authentication is required for protected routes
+- Include token as `Bearer <token>` in Authorization header for HTTP requests
+- Include token in handshake auth an object for Socket.IO: `{ auth: { token: "<token>" } }`
+
+

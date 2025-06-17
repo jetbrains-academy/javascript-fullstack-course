@@ -1,0 +1,23 @@
+type: theory
+custom_name: Dive into JSX
+files:
+  - name: frontend/src/App.jsx
+    visible: true
+  - name: frontend/src/assets/academy.svg
+    visible: true
+  - name: frontend/src/main.jsx
+    visible: true
+  - name: frontend/src/index.css
+    visible: true
+  - name: frontend/index.html
+    visible: true
+  - name: frontend/package.json
+    visible: true
+  - name: frontend/vite.config.js
+    visible: true
+  - name: images/echo.gif
+    visible: false
+    is_binary: true
+  - name: images/echo_boring.gif
+    visible: false
+    is_binary: true

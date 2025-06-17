@@ -1,0 +1,9 @@
+type: theory
+custom_name: Tools and libraries
+files:
+  - name: task.js
+    visible: true
+  - name: images/react.svg
+    visible: false
+  - name: images/vite.svg
+    visible: false
