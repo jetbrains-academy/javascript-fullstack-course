@@ -75,7 +75,7 @@ files:
       - offset: 160
         length: 42
         placeholder_text: // Import auth router
-        is_visible: false
+        is_visible: true
       - offset: 422
         length: 33
         placeholder_text: // Add auth router for the route /api/auth here
