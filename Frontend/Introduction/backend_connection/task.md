@@ -28,5 +28,5 @@ But don't worry — you don't need to fully understand everything right now.
 
 ### Authentication
 - JWT authentication is required for protected routes.
-- Include token as `Bearer <token>` in Authorization header for HTTP requests.
+- Include the token as `Bearer <token>` in the Authorization header for HTTP requests.
 - For Socket.IO connections, include the token in the handshake auth object: `{ auth: { token: "<token>" } }`.

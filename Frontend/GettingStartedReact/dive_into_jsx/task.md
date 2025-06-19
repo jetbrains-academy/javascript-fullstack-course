@@ -34,8 +34,8 @@ The code in the `src/App.jsx` file defines the fields and labels for entering an
 They have quite telling property names, but let's look at some of them in more detail.
 
 - `htmlFor="..."`: This label's property explicitly indicates which field the label belongs to, which can be useful when writing tests in the future.
-- `value={inputValue}` This ensures that whatever the user types is linked to the `inputValue` state.
-- `onChange={handleInputChange}` This listens for any input changes and instantly updates the state.
+- `value={inputValue}`: This ensures that whatever the user types is linked to the `inputValue` state.
+- `onChange={handleInputChange}`: This listens for any input changes and instantly updates the state.
 
 Now, run the application and check how it works!
 
