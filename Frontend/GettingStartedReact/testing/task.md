@@ -18,7 +18,7 @@ which you can use to better understand the task or debug it.
 ### Task
 Oh, no, someone broke our program! You already know that, though – you've run the tests, after all.
 
-<div style="text-align: center; width:60%; max-width: 300px;">
+<div style="text-align: center; width:60%; max-width: 300px; margin: 0 auto;">
 <img src="images/strange.gif">
 </div>
 

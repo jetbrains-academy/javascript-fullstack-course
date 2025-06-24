@@ -39,7 +39,7 @@ They have quite telling property names, but let's look at some of them in more d
 
 Now, run the application and check how it works!
 
-<div style="text-align: center; width:60%; max-width: 300px;">
+<div style="text-align: center; width:60%; max-width: 300px; margin: 0 auto;">
 <img src="images/echo.gif">
 </div>
 

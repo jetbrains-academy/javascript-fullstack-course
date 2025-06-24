@@ -19,6 +19,6 @@ As always, use the tests in the `frontend/__tests__/sum_test.jsx` file to better
 
 Also, don't forget to manually interact with the application to test it.
 
-<div style="text-align: center; width:60%; max-width: 300px;">
+<div style="text-align: center; width:60%; max-width: 300px; margin: 0 auto;">
 <img src="images/sum.gif">
 </div>
