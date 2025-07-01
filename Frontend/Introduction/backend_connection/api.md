@@ -4,17 +4,17 @@
 This document provides a comprehensive guide to the backend API for the messaging application. 
 The backend is built with Express.js and Socket.IO, providing both REST API endpoints and real-time socket events.
 
-## Server Information
+## Server information
 - **Port**: 8000
 
 ## Authentication
 The API uses JWT (JSON Web Token) for authentication.
 
-### Token Format
-- For HTTP requests: Include the token in the Authorization header as `Bearer <token>`
-- For Socket.IO connections: Include the token in the handshake auth object as `{ auth: { token: "<token>" } }`
+### Token format
+- For HTTP requests: Include the token in the Authorization header as `Bearer <token>`.
+- For Socket.IO connections: Include the token in the handshake auth object as `{ auth: { token: "<token>" } }`.
 
-## REST API Endpoints
+## REST API endpoints
 
 ### Authentication
 
@@ -178,7 +178,7 @@ The API uses JWT (JSON Web Token) for authentication.
   ```
 - **Description**: Sends a new message
 
-#### Delete Message
+#### Delete message
 - **Event**: `deleteMessage`
 - **Authentication**: Required
 - **Data**:
@@ -199,9 +199,9 @@ The API uses JWT (JSON Web Token) for authentication.
 - **Authentication**: Required
 - **Description**: Handles client-side errors
 
-### Server to Client Events
+### Server-to-client events
 
-#### New Message
+#### New message
 - **Event**: `message`
 - **Data**: Message object
   ```json
@@ -215,7 +215,7 @@ The API uses JWT (JSON Web Token) for authentication.
   ```
 - **Description**: Broadcasts a new message to all connected clients
 
-#### Message Deleted
+#### Message deleted
 - **Event**: `messageDeleted`
 - **Data**:
   ```json
@@ -235,7 +235,7 @@ The API uses JWT (JSON Web Token) for authentication.
   ```
 - **Description**: Sends error messages to clients
 
-## Data Models
+## Data models
 
 ### User
 - **username**: string (primary key)
