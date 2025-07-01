@@ -22,14 +22,14 @@ The API uses JWT (JSON Web Token) for authentication.
 - **URL**: `/api/auth/register`
 - **Method**: POST
 - **Authentication**: Not required
-- **Request Body**:
+- **Request body**:
   ```json
   {
     "username": "string",
     "password": "string"
   }
   ```
-- **Success Response**:
+- **Success response**:
   - **Code**: 201 Created
   - **Content**:
     ```json
@@ -38,7 +38,7 @@ The API uses JWT (JSON Web Token) for authentication.
       "username": "string"
     }
     ```
-- **Error Responses**:
+- **Error responses**:
   - **Code**: 400 Bad Request
     - **Content**: `{ "message": "Username and password are required" }`
   - **Code**: 409 Conflict
@@ -50,14 +50,14 @@ The API uses JWT (JSON Web Token) for authentication.
 - **URL**: `/api/auth/login`
 - **Method**: POST
 - **Authentication**: Not required
-- **Request Body**:
+- **Request body**:
   ```json
   {
     "username": "string",
     "password": "string"
   }
   ```
-- **Success Response**:
+- **Success response**:
   - **Code**: 200 OK
   - **Content**:
     ```json
@@ -66,7 +66,7 @@ The API uses JWT (JSON Web Token) for authentication.
       "username": "string"
     }
     ```
-- **Error Responses**:
+- **Error responses**:
   - **Code**: 400 Bad Request
     - **Content**: `{ "message": "Username and password are required" }`
   - **Code**: 401 Unauthorized
@@ -80,7 +80,7 @@ The API uses JWT (JSON Web Token) for authentication.
 - **URL**: `/api/messages`
 - **Method**: GET
 - **Authentication**: Required
-- **Success Response**:
+- **Success response**:
   - **Code**: 200 OK
   - **Content**: Array of message objects
     ```json
@@ -94,7 +94,7 @@ The API uses JWT (JSON Web Token) for authentication.
       }
     ]
     ```
-- **Error Response**:
+- **Error response**:
   - **Code**: 500 Internal Server Error
     - **Content**: `{ "message": "Error fetching messages" }`
 
@@ -102,7 +102,7 @@ The API uses JWT (JSON Web Token) for authentication.
 - **URL**: `/api/messages`
 - **Method**: POST
 - **Authentication**: Required
-- **Request Body**:
+- **Request body**:
   ```json
   {
     "content": "string"
@@ -120,7 +120,7 @@ The API uses JWT (JSON Web Token) for authentication.
       "updatedAt": "string"
     }
     ```
-- **Error Responses**:
+- **Error responses**:
   - **Code**: 400 Bad Request
     - **Content**: `{ "message": "Message content is required" }`
   - **Code**: 500 Internal Server Error
@@ -130,19 +130,19 @@ The API uses JWT (JSON Web Token) for authentication.
 - **URL**: `/api/messages/:id`
 - **Method**: DELETE
 - **Authentication**: Required
-- **URL Parameters**:
+- **URL parameters**:
   - `id`: ID of the message to delete
-- **Success Response**:
+- **Success response**:
   - **Code**: 204 No Content
-- **Error Responses**:
+- **Error responses**:
   - **Code**: 404 Not Found
     - **Content**: `{ "message": "Message not found" }`
   - **Code**: 500 Internal Server Error
     - **Content**: `{ "message": "Error deleting message" }`
 
-### Other Endpoints
+### Other endpoints
 
-#### Root Endpoint
+#### Root endpoint
 - **URL**: `/`
 - **Method**: GET
 - **Authentication**: Not required
@@ -150,7 +150,7 @@ The API uses JWT (JSON Web Token) for authentication.
   - **Code**: 200 OK
   - **Content**: "Hello, World!"
 
-#### Not Found
+#### Not found
 - **URL**: Any undefined route
 - **Method**: Any
 - **Authentication**: Not required
@@ -158,16 +158,16 @@ The API uses JWT (JSON Web Token) for authentication.
   - **Code**: 404 Not Found
   - **Content**: "Page Not Found"
 
-## Socket.IO Events
+## Socket.IO events
 
 ### Connection
 - **Event**: `connection`
 - **Authentication**: Required (via handshake auth token)
 - **Description**: Triggered when a client connects to the server
 
-### Client to Server Events
+### Client-to-server events
 
-#### Send Message
+#### Send message
 - **Event**: `message`
 - **Authentication**: Required
 - **Data**:
