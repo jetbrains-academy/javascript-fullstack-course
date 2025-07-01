@@ -2,7 +2,7 @@ Welcome to the second part of the course, in which you will develop the frontend
 
 # TODO: GIF
 
-### What You'll Learn
+### What you'll learn
 By completing this section, you will gain the following technical skills:
 - TODO
 - TODO
