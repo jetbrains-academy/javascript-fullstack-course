@@ -3,7 +3,7 @@ If you haven’t completed the first part of the course, you can quickly catch u
 For more detailed information, you can check the file [api.md](course://Frontend/Introduction/backend_connection/api.md). 
 But don't worry — you don't need to fully understand everything right now.
 
-### REST API Endpoints
+### REST API endpoints
 
 #### Authentication
 - `POST /api/auth/register`: Creates a new user account. Requires username and password in the request body. Returns a JWT token and the username.
@@ -15,13 +15,13 @@ But don't worry — you don't need to fully understand everything right now.
 - `DELETE /api/messages/:id`: Deletes a message by ID. Authentication required.
 
 
-### Socket.IO Events
+### Socket.IO events
 
-#### Client to Server
-- `message`: Sends a new message. Requires content in data object.
-- `deleteMessage`: Deletes a message. Requires messageId in data object.
+#### Client to server
+- `message`: Sends a new message. Requires content in the data object.
+- `deleteMessage`: Deletes a message. Requires `messageId` in the data object.
 
-#### Server to Client
+#### Server to client
 - `message`: Broadcasts a new message to all connected clients.
 - `messageDeleted`: Notifies all clients when a message is deleted.
 - `error`: Sends error messages to clients.
