@@ -6,8 +6,7 @@ files:
     placeholders:
       - offset: 328
         length: 101
-        placeholder_text: setIsAuthenticated(false);
-        is_visible: true
+        placeholder_text: // set the isAuthenticated variable
   - name: frontend/src/pages/Login.jsx
     visible: true
     placeholders:

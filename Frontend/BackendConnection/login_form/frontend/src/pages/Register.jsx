@@ -33,7 +33,7 @@ function Register({onLogin}) {
             });
 
             localStorage.setItem('token', response.data.token);
-            
+
             onLogin();
         } catch (err) {
             setError(err.response?.data?.message || 'Registration failed');

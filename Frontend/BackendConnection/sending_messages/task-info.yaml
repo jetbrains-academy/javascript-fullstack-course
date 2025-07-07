@@ -74,7 +74,7 @@ files:
     placeholders:
       - offset: 328
         length: 101
-        placeholder_text: setIsAuthenticated(false);
+        placeholder_text: // set the isAuthenticated variable
         dependency:
           section: Frontend
           lesson: BackendConnection
