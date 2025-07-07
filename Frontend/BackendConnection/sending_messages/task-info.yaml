@@ -1,0 +1,243 @@
+type: edu
+custom_name: Sending messages
+files:
+  - name: frontend/src/pages/Chat.jsx
+    visible: true
+    placeholders:
+      - offset: 158
+        length: 49
+        placeholder_text: // declare a newMessage variable
+      - offset: 250
+        length: 33
+        placeholder_text: // delete the token from the `localStorage`
+        dependency:
+          section: Frontend
+          lesson: BackendConnection
+          task: retrieving_messages
+          file: frontend/src/pages/Chat.jsx
+          placeholder: 1
+        is_visible: false
+      - offset: 412
+        length: 44
+        placeholder_text: // retrieve a token
+        dependency:
+          section: Frontend
+          lesson: BackendConnection
+          task: retrieving_messages
+          file: frontend/src/pages/Chat.jsx
+          placeholder: 2
+        is_visible: false
+      - offset: 473
+        length: 137
+        placeholder_text: // make a GET request to the /api/messages route
+        dependency:
+          section: Frontend
+          lesson: BackendConnection
+          task: retrieving_messages
+          file: frontend/src/pages/Chat.jsx
+          placeholder: 3
+        is_visible: false
+      - offset: 627
+        length: 27
+        placeholder_text: // use setMessages to update a messages array
+        dependency:
+          section: Frontend
+          lesson: BackendConnection
+          task: retrieving_messages
+          file: frontend/src/pages/Chat.jsx
+          placeholder: 4
+        is_visible: false
+      - offset: 1060
+        length: 44
+        placeholder_text: // retrieve a token
+      - offset: 1117
+        length: 151
+        placeholder_text: // make a POST request to the /api/messages route
+      - offset: 1282
+        length: 18
+        placeholder_text: // clear a newMessage variable
+      - offset: 1770
+        length: 255
+        placeholder_text: /* messages should be here */
+        dependency:
+          section: Frontend
+          lesson: BackendConnection
+          task: retrieving_messages
+          file: frontend/src/pages/Chat.jsx
+          placeholder: 5
+        is_visible: false
+      - offset: 2227
+        length: 47
+        placeholder_text: // add the onChange handler here
+  - name: frontend/src/App.jsx
+    visible: true
+    placeholders:
+      - offset: 328
+        length: 101
+        placeholder_text: setIsAuthenticated(false);
+        dependency:
+          section: Frontend
+          lesson: BackendConnection
+          task: retrieving_messages
+          file: frontend/src/App.jsx
+          placeholder: 1
+        is_visible: false
+  - name: frontend/src/pages/Login.jsx
+    visible: true
+    placeholders:
+      - offset: 535
+        length: 63
+        placeholder_text: // make POST request to the '/api/auth/login' route
+        dependency:
+          section: Frontend
+          lesson: BackendConnection
+          task: retrieving_messages
+          file: frontend/src/pages/Login.jsx
+          placeholder: 1
+        is_visible: false
+      - offset: 611
+        length: 51
+        placeholder_text: // save the token in localStorage with the key 'token'
+        dependency:
+          section: Frontend
+          lesson: BackendConnection
+          task: retrieving_messages
+          file: frontend/src/pages/Login.jsx
+          placeholder: 2
+        is_visible: false
+      - offset: 1429
+        length: 23
+        placeholder_text: // add the onChange action handler
+        dependency:
+          section: Frontend
+          lesson: BackendConnection
+          task: retrieving_messages
+          file: frontend/src/pages/Login.jsx
+          placeholder: 3
+        is_visible: false
+      - offset: 1903
+        length: 23
+        placeholder_text: // add the onChange action handler
+        dependency:
+          section: Frontend
+          lesson: BackendConnection
+          task: retrieving_messages
+          file: frontend/src/pages/Login.jsx
+          placeholder: 4
+        is_visible: false
+  - name: frontend/src/pages/Register.jsx
+    visible: true
+    placeholders:
+      - offset: 617
+        length: 46
+        placeholder_text: /* check passwords for inequality */
+        dependency:
+          section: Frontend
+          lesson: BackendConnection
+          task: retrieving_messages
+          file: frontend/src/pages/Register.jsx
+          placeholder: 1
+        is_visible: false
+      - offset: 772
+        length: 162
+        placeholder_text: // make a request to the backend
+        dependency:
+          section: Frontend
+          lesson: BackendConnection
+          task: retrieving_messages
+          file: frontend/src/pages/Register.jsx
+          placeholder: 2
+        is_visible: false
+      - offset: 948
+        length: 51
+        placeholder_text: // save token to the local storage
+        dependency:
+          section: Frontend
+          lesson: BackendConnection
+          task: retrieving_messages
+          file: frontend/src/pages/Register.jsx
+          placeholder: 3
+        is_visible: false
+      - offset: 1678
+        length: 23
+        placeholder_text: // add a handler for the onChange action
+        dependency:
+          section: Frontend
+          lesson: BackendConnection
+          task: retrieving_messages
+          file: frontend/src/pages/Register.jsx
+          placeholder: 4
+        is_visible: false
+  - name: backend/src/data/dbConfig.js
+    visible: true
+  - name: backend/src/data/dataServices.js
+    visible: true
+  - name: backend/src/routes/auth.js
+    visible: true
+  - name: backend/src/routes/messages.js
+    visible: true
+  - name: backend/src/index.js
+    visible: true
+  - name: backend/src/socket.js
+    visible: true
+  - name: backend/src/middleware/auth.js
+    visible: true
+  - name: backend/scripts/generateSecret.js
+    visible: true
+  - name: backend/__tests__/auth.test.js
+    visible: true
+  - name: backend/__tests__/socket.test.js
+    visible: true
+  - name: backend/__tests__/messages.test.js
+    visible: true
+  - name: backend/__tests__/dataServices.test.js
+    visible: true
+  - name: backend/package.json
+    visible: true
+  - name: backend/jest.setup.js
+    visible: true
+  - name: frontend/src/assets/academy.svg
+    visible: true
+  - name: frontend/src/main.jsx
+    visible: true
+  - name: frontend/src/index.css
+    visible: true
+  - name: frontend/__tests__/register_test.jsx
+    visible: true
+  - name: frontend/index.html
+    visible: true
+  - name: frontend/package.json
+    visible: true
+  - name: frontend/vite.config.js
+    visible: true
+  - name: package.json
+    visible: true
+  - name: frontend/__tests__/login_test.jsx
+    visible: true
+  - name: images/login.gif
+    visible: false
+    is_binary: true
+  - name: images/register.gif
+    visible: false
+    is_binary: true
+  - name: frontend/__tests__/token_test.jsx
+    visible: true
+  - name: images/refresh.gif
+    visible: false
+    is_binary: true
+  - name: frontend/__tests__/chat_test.jsx
+    visible: true
+  - name: images/messages.png
+    visible: false
+    is_binary: true
+  - name: test/test.jsx
+    visible: false
+    propagatable: false
+  - name: backend/database.sqlite
+    visible: true
+    is_binary: true
+  - name: backend/.env
+    visible: true
+  - name: images/sending.gif
+    visible: false
+    is_binary: true
