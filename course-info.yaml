@@ -20,6 +20,4 @@ additional_files:
   - name: run/Template Jest.run.xml
   - name: .env
   - name: babel.config.cjs
-  - name: .git/refs/heads/konstantin/backend_connection
-  - name: .git/logs/refs/heads/konstantin/backend_connection
 yaml_version: 4
