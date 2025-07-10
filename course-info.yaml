@@ -20,10 +20,4 @@ additional_files:
   - name: run/Template Jest.run.xml
   - name: .env
   - name: babel.config.cjs
-  - name: .git/logs/refs/heads/frontend
-  - name: .git/logs/refs/remotes/origin/frontend
-  - name: .git/logs/refs/heads/konstantin/react_intro
-  - name: .git/refs/heads/konstantin/react_intro
-  - name: .git/refs/heads/frontend
-  - name: .git/refs/remotes/origin/frontend
-yaml_version: 3
+yaml_version: 4
