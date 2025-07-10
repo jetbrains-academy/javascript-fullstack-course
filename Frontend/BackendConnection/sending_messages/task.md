@@ -1,9 +1,9 @@
 We have already learned how to retrieve messages, now it’s time to add the ability to send new ones!
 
-This is not hard, and all steps are already familiar to us.
+This isn't hard, and all the steps are already familiar to us.
 Try to imagine the solution algorithm without looking at the placeholders in the code, then check yourself by opening the hint below.
 
-<div class="hint" title="Sending new message implementation">
+<div class="hint" title="Send new message implementation">
 
   So, to add this feature to the project, we need to:
   - Declare a variable to store the new message.
@@ -15,7 +15,7 @@ Try to imagine the solution algorithm without looking at the placeholders in the
 ### Task
 
 1. Using `useState`, declare a variable `newMessage` with an initial value of an empty string.
-2. Add an onChange handler for the input field in the message form. This can be done in one line: `onChange={(e) => setNewMessage(e.target.value)}`.
+2. Add an `onChange` handler for the input field in the message form. This can be done in one line: `onChange={(e) => setNewMessage(e.target.value)}`.
 3. Implement the `handleSubmit` function:
     - Retrieve the token from `localStorage`.
     - Perform a POST request to the backend with the `newMessage` as the `content`:

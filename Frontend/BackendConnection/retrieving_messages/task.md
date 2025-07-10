@@ -1,6 +1,6 @@
 Let's focus on the main page of our chat: [_Chat.jsx_][Chat].
-To avoid getting confused with changes, in this task we will only implement fetching and displaying existing messages. 
-Sending messages will be done in the next task.
+To avoid confusion, in this task, we will only implement fetching and displaying existing messages.
+Sending messages will be covered in the next task.
 
 First, we need an array to store messages:
 
@@ -20,7 +20,7 @@ The [`map` function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Ref
 ))}
 ```
 
-Then, use the `fetchMessages` function called in the `useEffect` to implement message retrieval with the `'/api/messages'` route.
+Then, use the `fetchMessages` function, called in the `useEffect`, to implement message retrieval from the `'/api/messages'` route.
 
 ### Task
 
@@ -47,9 +47,9 @@ Next, run the application and check the display of messages that are already sto
 ### Console output
 We’ve added debug output using `console.log` and error messages with `console.error`. 
 Backend messages appear in the terminal. To see them on the frontend, open your browser's developer console. 
-Learn [here](https://developer.chrome.com/docs/devtools/open) how to open it for the Google Chrome.
+Learn [here](https://developer.chrome.com/docs/devtools/open) how to open it for Google Chrome.
 
-Developer tools in all popular browsers offer many debugging features. We recommend exploring them.
+Developer tools in all popular browsers offer many debugging features; we recommend exploring them.
 
 
 [Chat]: course://Frontend/BackendConnection/retrieving_messages/frontend/src/pages/Chat.jsx

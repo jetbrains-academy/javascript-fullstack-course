@@ -13,24 +13,24 @@ We'll also need to make a small update to the behavior of the logout button on t
 ### Task
 
 1. Look at the [_App.jsx_][App] file.  
-Depending on whether the token is stored in localStorage or not, 
-set the isAuthenticated variable to true or false, respectively.
+   Depending on whether the token is stored in `localStorage` or not,
+   set the `isAuthenticated` variable to `true` or `false`, respectively.
 2. Next, open the [_Chat.jsx_][Chat] file.  
-Update `handleLogout` so that it not only calls the `onLogout` method, but also deletes the token from the `localStorage`:
+   Update `handleLogout` so that it not only calls the `onLogout` method but also deletes the token from `localStorage`:
     ```jsx
     localStorage.removeItem('token');
     ```
 
 <div class="hint" title="Retrieving the token">
 
-  You can get the token from localStorage as you did in the previous task:
+  You can get the token from `localStorage` as you did in the previous task:
   ```jsx
     localStorage.getItem('token');
   ```
 </div>
 
 ### Check yourself
-As always use the tests in the `frontend/__tests__/token_test.jsx` file to better understand the task and verify your work.
+As always, use the tests in the `frontend/__tests__/token_test.jsx` file to better understand the task and verify your work.
 
 Next, run the whole application and try to register and refresh the page!
 

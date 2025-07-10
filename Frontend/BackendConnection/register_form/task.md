@@ -11,14 +11,14 @@ To allow users to see an error message, we add an `error` variable and a block t
 ```jsx
 {error && <div className="error">{error}</div>}
 ```
-This code displays `<div>` only when `error` is not empty.
+This code displays the `<div>` only when `error` is not empty.
 
 ---
-### Field changing handle
+### Handling field changes
 Next, we need to handle changes in the `username`, `password`, and `confirmPassword` fields.
 Since they belong to the same form, we will store their data in one `formData` object, so they will share a common handler.
 In the `handleChange` function, we can get the updated field's data from the `e.target` properties.
-Setters from `useState` can also accept a function, where the argument is the current variable value.
+Setters from `useState` can also accept a function where the argument is the current variable value.
 This allows us to update only the changed field while keeping the other fields intact:
 
 ```jsx
@@ -34,10 +34,10 @@ Now, add `handleChange` as a handler for the `onChange` action for the username 
 Great, now `formData` always holds the latest data, which we can use to call the `'/api/auth/register'` route in our backend.
 To make HTTP requests, we'll use the [axios](https://axios-http.com/docs/intro) library.
 
-Look at the `handleSubmit` function. 
+Take a look at the `handleSubmit` function.
 First, we need to disable the default form submission behavior by the browser using `e.preventDefault();` and handle it manually.
 
-Next, check if `password` and `confirmPassword` are the same. If they match, make a POST request with `username` and `password`:
+Next, check if `password` and `confirmPassword` are the same. If they match, make a POST request with the `username` and `password`:
 
 ```jsx
 const response = await axios.post('/api/auth/register', {
@@ -60,7 +60,7 @@ a standard JavaScript API provided by browsers to store persistent data on users
 localStorage.setItem('token', response.data.token);
 ```
 
-You can think of localStorage as a JavaScript `Map` where the token is stored under the key `'token'`.
+You can think of `localStorage` as a JavaScript `Map` where the token is stored under the key `'token'`.
 
 ---
 
@@ -73,10 +73,10 @@ So, let's summarize what you need to do:
 
 ### Check yourself
 You can use the tests in the `frontend/__tests__/register_test.jsx` file to better understand the task and verify your work.
-Note that tests are using the [mock functions](https://jestjs.io/docs/mock-function-api).
+Note that tests use [mock functions](https://jestjs.io/docs/mock-function-api).
 This allows you to test the frontend separately from the backend.
 
-Of course, when all tests passed, you can run the whole application and check your solution manually.
+Of course, once all tests have passed, you can run the whole application and check your solution manually.
 
 <div style="text-align: center; max-width: 600px; margin: 0 auto;">
 <img src="images/register.gif" alt="Register">
