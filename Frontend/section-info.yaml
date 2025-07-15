@@ -3,3 +3,4 @@ content:
   - GettingStartedReact
   - Routing
   - BackendConnection
+  - WebSockets

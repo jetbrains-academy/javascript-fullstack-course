@@ -23,7 +23,10 @@
     "@babel/preset-env": "^7.22.5",
     "@babel/preset-react": "^7.22.5",
     "@jest/globals": "^30.0.3",
-    "jest-mock-axios": "^4.8.0"
+    "jest-mock-axios": "^4.8.0",
+    "ws": "^8.18.3",
+    "engine.io": "^6.6.4",
+    "jest-websocket-mock": "^2.5.0"
   },
   "type": "module",
   "scripts": {
