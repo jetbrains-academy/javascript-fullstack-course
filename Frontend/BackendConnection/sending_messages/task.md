@@ -34,5 +34,5 @@ Next, run the application and try to send a message.
 For now, you will need to refresh the page to see the new message. But in the next lesson, we will add WebSocket support!
 
 <div style="text-align: center; max-width: 600px; margin: 0 auto;">
-<img src="images/sending.gif" alt="Sending receiving messages">
+<img src="images/sending.gif" alt="Sending and receiving messages">
 </div>
