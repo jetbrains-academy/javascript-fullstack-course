@@ -4,3 +4,4 @@ content:
   - Routing
   - BackendConnection
   - WebSockets
+  - DeletingMessage
