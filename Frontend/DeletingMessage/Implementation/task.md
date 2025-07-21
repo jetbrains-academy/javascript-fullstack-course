@@ -1,17 +1,17 @@
-Before starting to implement message deletion, let's break it into the steps.  
+Before starting to implement message deletion, let's break the process into steps.  
 Since we will use WebSockets, we need to:
 
 - Create a `handleDelete` method that emits a `deleteMessage` event when a message is deleted.
-- Add an interface element for each message to trigger the `handleDelete` method.
-- Add a handler for the `messageDeleted` event to remove messages from the list once deletion is confirmed from the backend.
+- Add an interface element to each message that triggers the `handleDelete` method.
+- Add a handler for the `messageDeleted` event to remove messages from the list once deletion is confirmed by the backend.
 
-Sounds simple, right? Let’s implement our plan.
+Sounds simple, right? Let’s implement the plan.
 In this task, we will also modify only the [Chat.jsx][Chat] file.
 
 ### Task
 #### A `handleDelete` method
-Since we need the message ID to delete it, the `handleDelete` function takes the corresponding parameter.
-You only need to emit a `deleteMessage` event, passing `messageId` as an argument:
+The `handleDelete` function requires the ID of the message to be deleted, so it should accept it as a parameter.
+You only need to emit a `deleteMessage` event, passing the `messageId` as an argument:
 ```jsx
 socket?.emit('deleteMessage', { messageId });
 ```
@@ -34,8 +34,8 @@ When clicked, it will trigger the `handleDelete` method with the message's ID:
 
 #### A `messageDeleted` event
 Finally, we need to handle the `messageDeleted` event.
-Here, you should remove a message from the `messages` array where the `id` field matches `data.messageId`.
-Try implementing this deletion using the `'message'` event handler as an example. Or, you can use a hint:
+Here, you should remove the corresponding message from the `messages` array where the `id` field matches `data.messageId`.
+To implement this, use the `'message'` event handler as a reference, or use the following hint:
 
 <div class="hint">
 
