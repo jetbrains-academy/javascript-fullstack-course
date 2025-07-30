@@ -9,6 +9,7 @@ content:
   - Introduction
   - Backend
   - Frontend
+  - Deploy
 additional_files:
   - name: package.json
   - name: package-lock.json
