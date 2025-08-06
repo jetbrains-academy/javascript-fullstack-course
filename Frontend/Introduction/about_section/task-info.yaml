@@ -3,3 +3,6 @@ custom_name: About this section
 files:
   - name: task.js
     visible: true
+  - name: images/great_msg.gif
+    visible: false
+    is_binary: true
