@@ -8,6 +8,7 @@ programming_language: JavaScript
 content:
   - Introduction
   - Backend
+  - Frontend
 additional_files:
   - name: package.json
   - name: package-lock.json
@@ -18,4 +19,5 @@ additional_files:
   - name: jsconfig.json
   - name: run/Template Jest.run.xml
   - name: .env
-yaml_version: 2
+  - name: babel.config.cjs
+yaml_version: 4
