@@ -53,7 +53,7 @@ Next, run the application and try deleting a message!
 <img src="images/deleting.gif" alt="Deleting messages">
 </div>
 
-[Chat]: course://Frontend/MessageDeleting/Implementation/frontend/src/pages/Chat.jsx
+[Chat]: course://Frontend/DeletingMessage/Implementation/frontend/src/pages/Chat.jsx
 <style>
 img {
   display: inline !important;
