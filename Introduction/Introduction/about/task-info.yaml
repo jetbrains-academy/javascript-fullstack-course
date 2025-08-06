@@ -3,6 +3,6 @@ custom_name: About this course
 files:
   - name: task.js
     visible: true
-  - name: images/chat.png
+  - name: images/messaging.gif
     visible: false
     is_binary: true

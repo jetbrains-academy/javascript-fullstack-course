@@ -1,14 +1,19 @@
 type: marketplace
-title: ERN-stack course
+title: Full Stack JavaScript for Beginners
 language: English
-summary: |-
-  <p>TODO (1)</p>
-  <p>TODO (2)</p>
+summary: "<p>Build a real-time chat app for your portfolio while mastering full-stack\
+  \ web development! Learn Node.js, Express.js, and React. Hands-on and easy to follow\
+  \ — ideal for beginners.</p>"
+vendor:
+  name: JetBrains
+  email: support@jetbrains.com
+  url: https://www.jetbrains.com/
 programming_language: JavaScript
 content:
   - Introduction
   - Backend
   - Frontend
+  - Feedback
 additional_files:
   - name: package.json
   - name: package-lock.json

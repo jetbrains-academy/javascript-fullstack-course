@@ -1,9 +1,11 @@
-# JavaScript Fullstack Course
+# Full Stack JavaScript for Beginners
 [![official JetBrains project](http://jb.gg/badges/official.svg)](https://confluence.jetbrains.com/display/ALL/JetBrains+on+GitHub) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-ERN-stack course (Express.js, Node.js, React).
-> [!IMPORTANT]  
-> TODO: Add course description.
+Have you always wanted to create web applications but weren’t sure where to begin? Start your full-stack development journey with this beginner-friendly course by JetBrains Academy. Step by step, you'll learn to build web applications, mastering <a href="https://nodejs.org/">Node.js</a>, <a href="https://expressjs.com/">Express.js</a> and <a href="https://react.dev/">React</a>.
+
+As you progress, you’ll create your own <b>Real-Time Chat Application</b> featuring user authentication and live updates. Each lesson will guide you through building and understanding an essential part of this larger project. By the end of the course, you'll have both a strong foundation in full-stack development and a portfolio-ready project to showcase.
+
+The course is divided into two parts: backend and frontend (the frontend is coming soon). In the backend section, you’ll use a demo frontend to experiment with your developments. We've taken care of everything — this is the perfect place to start!
 
 ## Want to know more?
 If you have questions about the course or the tasks, or if you find any errors, feel free to ask questions and participate in discussions within the repository [issues](https://github.com/jetbrains-academy/javascript-fullstack-course/issues).
