@@ -1,0 +1,6 @@
+type: theory
+custom_name: Lesson overview
+files:
+  - name: task.js
+    visible: true
+    propagatable: false

@@ -2,3 +2,7 @@ content:
   - Introduction
   - GettingStartedReact
   - Routing
+  - BackendConnection
+  - WebSockets
+  - DeletingMessage
+  - FinalTouches
