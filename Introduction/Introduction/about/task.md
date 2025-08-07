@@ -16,8 +16,6 @@ In this course, you'll encounter minimal coding, but it will cover **all stages*
 
 You'll get only the essential theory, links to in-depth resources, and practical tasks — nothing unnecessary.
 
-<!-- The following GIF will be updated after the frontend section release -->
-
 <div style="text-align: center; width:100%; max-width: 800px;">
 <img src="images/messaging.gif" alt="Messaging with the edu frontend">
 </div>

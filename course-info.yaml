@@ -16,7 +16,6 @@ content:
   - Feedback
 additional_files:
   - name: package.json
-  - name: package-lock.json
   - name: utils/utils.js
   - name: README.md
   - name: LICENSE
