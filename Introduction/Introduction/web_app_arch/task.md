@@ -44,9 +44,6 @@ To simplify development and for convenient testing, an educational frontend will
 
 By the second half of the course, you’ll have a clear understanding of how the backend works, and then you'll be ready to dive into frontend development.
 
-> **The second part will be added to this course soon. Stay tuned for updates!**
-
-
 <style>
 img {
   display: inline !important;
