@@ -5,7 +5,7 @@ Have you always wanted to create web applications but weren’t sure where to be
 
 As you progress, you’ll create your own <b>Real-Time Chat Application</b> featuring user authentication and live updates. Each lesson will guide you through building and understanding an essential part of this larger project. By the end of the course, you'll have both a strong foundation in full-stack development and a portfolio-ready project to showcase.
 
-The course is divided into two parts: backend and frontend (the frontend is coming soon). In the backend section, you’ll use a demo frontend to experiment with your developments. We've taken care of everything — this is the perfect place to start!
+The course is divided into two parts: backend and frontend. In the backend section, you’ll use a demo frontend to experiment with your developments. In the frontend section, you’ll use the backend you created earlier. We've taken care of everything — this is the perfect place to start!
 
 ## Want to know more?
 If you have questions about the course or the tasks, or if you find any errors, feel free to ask questions and participate in discussions within the repository [issues](https://github.com/jetbrains-academy/javascript-fullstack-course/issues).

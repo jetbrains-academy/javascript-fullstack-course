@@ -1,0 +1,79 @@
+type: edu
+custom_name: Register form
+files:
+  - name: frontend/src/pages/Register.jsx
+    visible: true
+    placeholders:
+      - offset: 617
+        length: 46
+        placeholder_text: /* check passwords for inequality */
+      - offset: 772
+        length: 162
+        placeholder_text: // make a request to the backend
+      - offset: 948
+        length: 51
+        placeholder_text: // save token to the local storage
+      - offset: 1678
+        length: 23
+        placeholder_text: // add a handler for the onChange action
+  - name: test/test.jsx
+    visible: false
+    propagatable: false
+  - name: backend/src/data/dbConfig.js
+    visible: true
+  - name: backend/src/data/dataServices.js
+    visible: true
+  - name: backend/src/routes/auth.js
+    visible: true
+  - name: backend/src/routes/messages.js
+    visible: true
+  - name: backend/src/index.js
+    visible: true
+  - name: backend/src/socket.js
+    visible: true
+  - name: backend/src/middleware/auth.js
+    visible: true
+  - name: backend/scripts/generateSecret.js
+    visible: true
+  - name: backend/__tests__/auth.test.js
+    visible: true
+  - name: backend/__tests__/socket.test.js
+    visible: true
+  - name: backend/__tests__/messages.test.js
+    visible: true
+  - name: backend/__tests__/dataServices.test.js
+    visible: true
+  - name: backend/package.json
+    visible: true
+  - name: backend/jest.setup.js
+    visible: true
+  - name: backend/database.sqlite
+    visible: true
+    is_binary: true
+  - name: frontend/src/pages/Chat.jsx
+    visible: true
+  - name: frontend/src/pages/Login.jsx
+    visible: true
+  - name: frontend/src/assets/academy.svg
+    visible: true
+  - name: frontend/src/App.jsx
+    visible: true
+  - name: frontend/src/main.jsx
+    visible: true
+  - name: frontend/src/index.css
+    visible: true
+  - name: frontend/__tests__/register_test.jsx
+    visible: true
+  - name: frontend/index.html
+    visible: true
+  - name: frontend/package.json
+    visible: true
+  - name: frontend/vite.config.js
+    visible: true
+  - name: package.json
+    visible: true
+  - name: backend/.env
+    visible: true
+  - name: images/register.gif
+    visible: false
+    is_binary: true

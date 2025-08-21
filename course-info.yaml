@@ -1,5 +1,5 @@
 type: marketplace
-title: Full Stack JavaScript for Beginners
+title: Full-Stack JavaScript for Beginners
 language: English
 summary: "<p>Build a real-time chat app for your portfolio while mastering full-stack\
   \ web development! Learn Node.js, Express.js, and React. Hands-on and easy to follow\
@@ -12,10 +12,10 @@ programming_language: JavaScript
 content:
   - Introduction
   - Backend
+  - Frontend
   - Feedback
 additional_files:
   - name: package.json
-  - name: package-lock.json
   - name: utils/utils.js
   - name: README.md
   - name: LICENSE
@@ -23,4 +23,5 @@ additional_files:
   - name: jsconfig.json
   - name: run/Template Jest.run.xml
   - name: .env
-yaml_version: 3
+  - name: babel.config.cjs
+yaml_version: 4

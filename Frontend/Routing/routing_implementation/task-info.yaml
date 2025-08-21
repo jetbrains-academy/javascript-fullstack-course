@@ -1,0 +1,44 @@
+type: edu
+custom_name: Routing implementation
+files:
+  - name: frontend/src/App.jsx
+    visible: true
+    placeholders:
+      - offset: 908
+        length: 218
+        placeholder_text: "<Register onLogin={() => {}} />"
+      - offset: 1355
+        length: 216
+        placeholder_text: "<Chat onLogout={() => {}} />"
+  - name: test/test.jsx
+    visible: false
+    propagatable: false
+  - name: frontend/src/pages/Chat.jsx
+    visible: true
+  - name: frontend/src/pages/Login.jsx
+    visible: true
+  - name: frontend/src/pages/Register.jsx
+    visible: true
+  - name: frontend/src/assets/academy.svg
+    visible: true
+  - name: frontend/src/main.jsx
+    visible: true
+  - name: frontend/src/index.css
+    visible: true
+  - name: frontend/index.html
+    visible: true
+  - name: frontend/package.json
+    visible: true
+  - name: frontend/vite.config.js
+    visible: true
+  - name: images/routing_graph_dark.png
+    visible: false
+    is_binary: true
+  - name: images/routing_graph.png
+    visible: false
+    is_binary: true
+  - name: frontend/__tests__/routing_test.jsx
+    visible: true
+  - name: images/login_logout.gif
+    visible: false
+    is_binary: true

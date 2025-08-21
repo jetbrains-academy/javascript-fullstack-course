@@ -1,0 +1,8 @@
+type: theory
+custom_name: Creating a new project
+files:
+  - name: task.js
+    visible: true
+  - name: images/vite_react.gif
+    visible: false
+    is_binary: true

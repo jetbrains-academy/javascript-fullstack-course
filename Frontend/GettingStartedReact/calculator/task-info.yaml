@@ -1,0 +1,42 @@
+type: edu
+custom_name: Calculator
+files:
+  - name: frontend/src/App.jsx
+    visible: true
+    placeholders:
+      - offset: 103
+        length: 37
+        placeholder_text: ""
+        is_visible: false
+      - offset: 233
+        length: 81
+        placeholder_text: ""
+        is_visible: false
+      - offset: 1118
+        length: 48
+        placeholder_text: ""
+        is_visible: false
+      - offset: 1455
+        length: 15
+        placeholder_text: '"-1"'
+        is_visible: false
+  - name: test/test.jsx
+    visible: false
+    propagatable: false
+  - name: frontend/src/assets/academy.svg
+    visible: true
+  - name: frontend/src/main.jsx
+    visible: true
+  - name: frontend/src/index.css
+    visible: true
+  - name: frontend/__tests__/sum_test.jsx
+    visible: true
+  - name: frontend/index.html
+    visible: true
+  - name: frontend/package.json
+    visible: true
+  - name: frontend/vite.config.js
+    visible: true
+  - name: images/sum.gif
+    visible: false
+    is_binary: true

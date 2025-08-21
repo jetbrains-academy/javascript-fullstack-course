@@ -1,0 +1,46 @@
+type: edu
+custom_name: Testing
+files:
+  - name: frontend/__tests__/echo_test.jsx
+    visible: true
+  - name: test/test.jsx
+    visible: false
+    propagatable: false
+  - name: frontend/src/assets/academy.svg
+    visible: true
+  - name: frontend/src/App.jsx
+    visible: true
+    placeholders:
+      - offset: 1096
+        length: 10
+        placeholder_text: inputValue.split("").join(" ")
+        is_visible: false
+  - name: frontend/src/main.jsx
+    visible: true
+  - name: frontend/src/index.css
+    visible: true
+  - name: frontend/index.html
+    visible: true
+  - name: frontend/package.json
+    visible: true
+  - name: frontend/vite.config.js
+    visible: true
+  - name: images/run.svg
+    visible: false
+  - name: images/runAll.svg
+    visible: false
+  - name: images/strange.gif
+    visible: false
+    is_binary: true
+  - name: images/run_dark.svg
+    visible: false
+  - name: images/runError.svg
+    visible: false
+  - name: images/runSuccess.svg
+    visible: false
+  - name: images/runAll_dark.svg
+    visible: false
+  - name: images/runError_dark.svg
+    visible: false
+  - name: images/runSuccess_dark.svg
+    visible: false
