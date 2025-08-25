@@ -1,0 +1,5 @@
+type: theory
+custom_name: Introduction
+files:
+  - name: task.js
+    visible: true
