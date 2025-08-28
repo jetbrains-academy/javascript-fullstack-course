@@ -1,15 +1,15 @@
-So far, we have been running our project locally, and that was enough for testing.
+So far, we have been running our project locally, which has been sufficient for testing.
 
 In this lesson, we’ll discuss how to adapt our application 
 before deploying it to a server and making it accessible to users.
 
-You could manually copy the application to a server, install all dependencies, 
-and run the application, but this approach is unstable. 
-For example, migrating the application to a different hosting service could take a long time.
+While you could manually copy the application to a server, install all dependencies,
+and run it there, this approach is unreliable.
+For example, migrating the application to a different hosting service might require significant time.
 
 We can avoid these issues by deploying and running the application in a **Docker container**.
 
-From this lesson, you will learn:
-- How to write a Dockerfile.
-- How to create a Docker Compose file for the project.
-- Run your application in a Docker containers in one command.
+From this lesson, you will learn how to:
+- Write a Dockerfile.
+- Create a Docker Compose file for the project.
+- Run your application in Docker containers with a single command.
