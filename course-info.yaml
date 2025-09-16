@@ -4,7 +4,7 @@ language: English
 summary: "<p>Build a real-time chat app for your portfolio while mastering full-stack\
   \ web development! Learn Node.js, Express.js, and React. Hands-on and easy to follow\
   \ — ideal for beginners.</p><br><p>Important: This course requires <b>Node.js version\
-  \ 22 or higher</b>.<p/><p>Please check the <b>Settings</b> section below.</p>"
+  \ 22 or higher</b>.</p><p>Please check the <b>Settings</b> section below.</p>"
 vendor:
   name: JetBrains
   email: support@jetbrains.com
