@@ -1,5 +1,5 @@
 type: theory
-custom_name: Deploy to builder lab
+custom_name: Deploy to AWS free tier
 files:
   - name: docker-compose.yaml
     visible: true
