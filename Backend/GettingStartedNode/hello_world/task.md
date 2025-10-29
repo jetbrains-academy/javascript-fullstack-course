@@ -13,7 +13,7 @@ which contains all the essential information about the project, and a source cod
 ### index.js
 This file is where all the magic of web development happens.
 
-First, we create an HTTP server using the `createServer` method and specify a handler function for all incoming requests.
+First, we create an HTTP server using the `createServer` method and specify a callback handler function for all incoming requests.
 The handler function's job is to process each new request (`req`) and provide a response (`res`).
 
 In our example, the function checks which [URL](https://en.wikipedia.org/wiki/URL) (Uniform Resource Locator) the request goes to.
