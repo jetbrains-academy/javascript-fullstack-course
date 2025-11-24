@@ -1,5 +1,6 @@
 # Full Stack JavaScript for Beginners
 [![official JetBrains project](http://jb.gg/badges/official.svg)](https://confluence.jetbrains.com/display/ALL/JetBrains+on+GitHub) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+<img src="https://img.shields.io/badge/22.0%2B-x?style=flat&logo=Node.js&logoColor=green&label=Node.js&color=green">
 <a href="https://academy.jetbrains.com/course/27687-full-stack-javascript-for-beginners?=fromGitHub" target="_blank">
 <img src="https://img.shields.io/static/v1?logo=jetbrains&logoColor=1bd58e&label=&message=Course%20catalog&color=5a5a5a&style=flat" alt="Course%20catalog"></a>
 <a href="https://plugins.jetbrains.com/plugin/27687-full-stack-javascript-for-beginners/versions" target="_blank">
