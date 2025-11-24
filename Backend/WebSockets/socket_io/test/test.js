@@ -42,6 +42,24 @@ test('Test message event - Should broadcast messages to all clients', (done) => 
     clientSocket.emit('message', testMessage);
 });
 
+test('Test error event - Should notify of an error if it occurs', (done) => {
+    const testMessage = null;
+
+    clientSocket.on('error', (message) => {
+        try {
+            expect(message).toMatchObject({
+                message: 'Error sending message',
+            });
+            done();
+        } catch (err) {
+            customizeError(err, 'Failed to check broadcasted messages to all clients: ', true);
+            done(err);
+        }
+    });
+
+    clientSocket.emit('message', testMessage);
+});
+
 test('Test message storage - Should store message in database', (done) => {
     const testMessage = { username: 'User', content: 'Storing test message' };
 
