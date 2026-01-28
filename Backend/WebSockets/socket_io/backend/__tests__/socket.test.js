@@ -43,6 +43,23 @@ describe('Socket.IO Chat', () => {
             clientSocket.emit('message', testMessage);
         });
 
+        it('should notify of an error if it occurs', (done) => {
+            const testMessage = null;
+
+            clientSocket.on('error', (message) => {
+                try {
+                    expect(message).toMatchObject({
+                        message: 'Error sending message',
+                    });
+                    done(); // Called if the assertion passes
+                } catch (err) {
+                    done(err); // Mark the test as failed if the assertion fails
+                }
+            });
+
+            clientSocket.emit('message', testMessage);
+        });
+
         it('should store message in database', (done) => {
             const testMessage = {username: 'User', content: 'Test message for storage'};
             clientSocket.on('message', async (message) => {
